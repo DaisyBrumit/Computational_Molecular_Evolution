@@ -1,0 +1,271 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.21)  25 AUG 2022 18:26
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**clustalW_align.tex
+(./clustalW_align.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-08-05> (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (/Library/Frameworks/R.framework/Versions/4.2/Resources/library/msa/tex/texshade.sty
+Package: texshade 2021/04/01 LaTeX TeXshade (v1.26)
+ Package `texshade', Version 1.26 of 2021/04/01. (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: dvips.def on input line 149.
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+) (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\structurefile=\read2
+\featurefile=\write3
+\alignfile=\read3
+\sublogofile=\read4
+\exp@rtfile=\write4
+\exp@rt@chimerafile=\write5
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+\symalphahelix=\mathgroup6
+\loopcount=\count193
+\innerloopcount=\count194
+\outerloopcount=\count195
+\seq@count=\count196
+\killseq@count=\count197
+\seq@percent=\count198
+\res@count=\count199
+\seq@pointer=\count266
+\pos@count=\count267
+\res@perline=\count268
+\end@count=\count269
+\cons@count=\count270
+\total@count=\count271
+\temp@count=\count272
+\triple@count=\count273
+\temp@@count=\count274
+\pos@sum=\count275
+\box@width=\skip49
+\name@width=\skip50
+\box@depth=\skip51
+\width@tmp=\skip52
+\box@height=\skip53
+\number@width=\skip54
+\line@stretch=\skip55
+\center@fill=\skip56
+\arrow@width=\skip57
+\arrow@height=\skip58
+\rule@thick=\skip59
+\arrow@thick=\skip60
+\logo@height=\skip61
+\equal@width=\skip62
+\equal@tmp=\skip63
+\equal@height=\skip64
+\temp@@length=\skip65
+\vspace@legend=\skip66
+\hspace@legend=\skip67
+\bar@length=\skip68
+Package color Info: Redefining color LightGray on input line 1716.
+Package color Info: Redefining color LightLightGray on input line 1817.
+Package color Info: Redefining color LightLightLightGray on input line 1919.
+) (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-08-05 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count276
+\l__pdf_internal_box=\box51
+)
+No file clustalW_align.aux.
+\openout1 = `clustalW_align.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+(/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (/var/folders/m8/n8l42jbn1ss5pbyxj9lkbfwwj2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta:
+Runaway argument?
+! Paragraph ended before \inf@@get was complete.
+<to be read again> 
+                   \par 
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Misplaced alignment tab character &.
+\msfline ->\par &
+                  & & & @
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+\msfline ->\par & &
+                    & & @
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+\msfline ->\par & & &
+                      & @
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+\msfline ->\par & & & &
+                        @
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Runaway argument?
+! Paragraph ended before \check@letter was complete.
+<to be read again> 
+                   \par 
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+Runaway argument?
+! Paragraph ended before \seq@get was complete.
+<to be read again> 
+                   \par 
+l.25 ...2n2ch/T//RtmpitdnpH/seq347e7517bff5.fasta}
+                                                  
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+Runaway argument?
+! Paragraph ended before \firstchar@get was complete.
+<to be read again> 
+                   \par 
+l.45 \end{texshade}
+                   
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+Runaway argument?
+! Paragraph ended before \res@get was complete.
+<to be read again> 
+                   \par 
+l.45 \end{texshade}
+                   
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Misplaced alignment tab character &.
+\seq@line ->\par &
+                  @
+l.45 \end{texshade}
+                   
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+. . . . . . [1
+Non-PDF special ignored!
+<special> papersize=794.96999pt,614.295pt
+
+{/Users/dfrybrum/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] )
+LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+ (/Users/dfrybrum/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2] (./clustalW_align.aux) ) 
+Here is how much of TeX's memory you used:
+ 7645 strings out of 479638
+ 91693 string characters out of 5877930
+ 1573812 words of memory out of 5000000
+ 26204 multiletter control sequences out of 15000+600000
+ 471599 words of font info for 39 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 775i,6n,65p,202b,3553s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/dfrybrum/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/dfrybrum/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/dfrybrum/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on clustalW_align.pdf (2 pages, 103808 bytes).
+PDF statistics:
+ 26 PDF objects out of 1000 (max. 8388607)
+ 15 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
