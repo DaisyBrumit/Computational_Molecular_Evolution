@@ -30,9 +30,10 @@ library(tinytex)
 
 # Part 1: Align the Sequences with Different Methods
 aaSeqs = readAAStringSet("cryptochrome.fa") # read in
-aligns1 = msa(aaSeqs) # alignment
-print(aligns1, show="complete") # check work
+aligns1 = msa(aaSeqs) # alignment, default = Clustal W
+aligns2 = msa(aaSeqs, method = "ClustalOmega")
 
+#print(aligns1, show="complete") # check work
 # create more visually appealing output
 msaPrettyPrint(aligns1, 
                output="pdf", 
@@ -41,4 +42,15 @@ msaPrettyPrint(aligns1,
                showNumbering="none", 
                showLogo="none", 
                askForOverwrite=TRUE, 
-               verbose=FALSE)
+               verbose=TRUE)
+
+msaPrettyPrint(aligns2, 
+               output="pdf", 
+               file="clustalOmega_align.pdf", 
+               showNames="right",
+               showNumbering="none", 
+               showLogo="none", 
+               askForOverwrite=TRUE, 
+               verbose=TRUE)
+
+
