@@ -16,7 +16,6 @@ if (!requireNamespace("BiocManager", quietly=TRUE))
   install.packages("BiocManager")
 BiocManager::install("msa")
 BiocManager::install("phangorn")
-BiocManager::install("phytools")
 BiocManager::install("bios2mds")
 
 library(msa)
@@ -53,4 +52,18 @@ msaPrettyPrint(aligns2,
                askForOverwrite=TRUE, 
                verbose=TRUE)
 
+
+# Part 2: Compare Alignments with a Reference Alignment
+
+aligns1_as_align = msaConvert(aligns1, "bios2mds::align") #generate clustalW alignment
+export.fasta(aligns1_as_align, outfile="clustalW_aln.fa") #output evaluated alignment
+aligns2_as_align = msaConvert(aligns2, "bios2mds::align") #generate clustal omega alignment
+export.fasta(aligns2_as_align, outfile="clustalO_aln.fa") 
+
+# Part 3: ID ortho and paralogs
+
+aaPhydat = as.phyDat(aligns)
+d = dist.ml(aaPhydat, model="JTT")
+my.tree = nj(d)
+plot(my.tree)
 
