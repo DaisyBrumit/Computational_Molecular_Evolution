@@ -1,0 +1,85 @@
+---
+title: "hw2_geneticDistanceMethods_substitutionModels"
+author: "Daisy Fry-Brumit"
+date: "2022-09-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# We'll be using 3 packages for this exercise: msa to align sequences with Clustal-O, phangorn to perform model testing and distance calculations, and phytools to perform bootstrapping. You should already have all 3 of these installed from the last exercise, so all you need to do is load them. There are 2 additional packages we'll use to make the very last plot, but you do not need them yet.
+
+library(msa)
+library(phangorn)
+library(phytools)
+```
+
+## Background
+
+For this exercise, you will be using a dataset that consists of 48 DNA sequences from the seasonal influenza (flu) virus.^1^ These 48 samples were collected in the U.S. over 16 years (from 1993 - 2008), with 3 samples from each year. The samples are labeled by the year they were collected. The goals for the this exercise are to determine which substitution models best fit these data, and to use some classic phylogenetic methods in order to see if we can capture how the virus evolved over time.
+
+## Part 1: Align Sequences and Compare Models
+
+```{r, align_and_test, include=FALSE, results='hide'}
+dnaSeqs = readDNAStringSet("flu_seqs.fasta") #read in seqs
+aligns = msa(dnaSeqs, method="ClustalOmega") #align DNA seqs
+forPhang = msaConvert(aligns, type="phangorn::phyDat") #convert alignment so phangorn can use
+mt = modelTest(forPhang, model=c("JC","F81","K80","F84","TrN")) #test 5 models against the data
+write.table(mt, "modelTest_results.txt", quote=FALSE, sep="\t",row.names=FALSE, col.names=TRUE) # summarize results, output to .txt for easy viewing
+```
+
+```{r test_output}
+knitr::kable(mt, caption = 'Model Test Output')
+```
+
+### Question 1 (5 pts)
+
+##### The Bayesian Information Criterion (BIC) is a method for comparing models that includes penalties for more complex models. With this method, the best one is the model with the LOWEST BIC score. In your test, which model is this? Describe this model in terms of its assumptions.
+
+The lowest scoring model here is one of the Tamura-Nei models: TrN+G(4). The TrN models operate under the assumptions that 
+
+* base frequencies are unequal
+* rates of subsittution are unequal between transitions and transversions
+  + further, rates are unqual between the different types of transitions
+  
+As such, it is a more complex model and includes 3 parameters (transition1, transition2, and transversion) to describe rates of substitution. The TrNG(4) model specifically assumes 
+
+### Question 2 ()
+
+## Part 2: Create and Compare Trees
+
+### Question 3 ()
+
+### Question 4 ()
+
+### Question 5 ()
+
+### Question 6 ()
+
+## Part 3: Find the Most Parsimonious Tree
+
+### Question 7 ()
+
+### Question 8 ()
+
+### Question 9 ()
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## References
+
+^1^ flu_seqs.fasta
