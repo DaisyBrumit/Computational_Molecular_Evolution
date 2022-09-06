@@ -15,7 +15,7 @@ tinytex::install_tinytex()
 if (!requireNamespace("BiocManager", quietly=TRUE))
   install.packages("BiocManager")
 BiocManager::install("msa")
-BiocManager::install("phangorn")
+BiocManager::install("phangorn", force = TRUE)
 BiocManager::install("bios2mds")
 
 library(msa)
@@ -62,8 +62,12 @@ export.fasta(aligns2_as_align, outfile="clustalO_aln.fa")
 
 # Part 3: ID ortho and paralogs
 
-aaPhydat = as.phyDat(aligns)
+aaPhydat = as.phyDat(aligns1)
 d = dist.ml(aaPhydat, model="JTT")
 my.tree = nj(d)
 plot(my.tree)
 
+my.tree2 = root(my.tree, outgroup="InsectJ")
+plot(my.tree2)
+
+SSs
