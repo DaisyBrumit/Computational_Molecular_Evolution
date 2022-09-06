@@ -43,7 +43,7 @@ The lowest scoring model here is one of the Tamura-Nei models: TrN+G(4). The TrN
 * rates of subsittution are unequal between transitions and transversions
   + further, rates are unqual between the different types of transitions
   
-As such, it is a more complex model and includes 3 parameters (transition1, transition2, and transversion) to describe rates of substitution. The TrNG(4) model specifically assumes 
+As such, it is a more complex model and includes 3 parameters (transition1, transition2, and transversion) to describe rates of substitution. The TrN + G(4) model specifically assumes 
 
 ### Question 2 ()
 
