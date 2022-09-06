@@ -70,4 +70,45 @@ plot(my.tree)
 my.tree2 = root(my.tree, outgroup="InsectJ")
 plot(my.tree2)
 
-SSs
+# Part 4: examine diffs
+
+cry1.seqs = aaSeqs[grep("(FishC|FishD|MouseA|BirdF|FrogH)", names(aaSeqs))]
+cry2.seqs = aaSeqs[grep("(BirdG|MouseB|FrogI|FishE)", names(aaSeqs))]
+
+cry1_align = msa(cry1.seqs) #generate clustalW alignment
+cry2_align = msa(cry2.seqs) #generate clustalW alignment
+
+
+msaPrettyPrint(cry1_align,
+               output="pdf",
+               file="cry1_align.pdf",
+               showNames="right",
+               showNumbering="none",
+               shadingMode="functional",
+               shadingModeArg="structure",
+               verbose=TRUE,
+               askForOverwrite=TRUE)
+
+msaPrettyPrint(cry2_align,
+               output="pdf",
+               file="cry2_align.pdf",
+               showNames="right",
+               showNumbering="none",
+               shadingMode="functional",
+               shadingModeArg="structure",
+               verbose=TRUE,
+               askForOverwrite=TRUE)
+
+x = msaConsensusSequence(cry1_align)
+y = msaConsensusSequence(cry2_align)
+cry.con = AAStringSet(c(x,y))
+cry_align = msa(cry.con)
+
+msaPrettyPrint(cry_align, 
+               output="pdf", 
+               file="cry_align.pdf", 
+               showNames="right",
+               showNumbering="none", 
+               showLogo="none", 
+               askForOverwrite=TRUE, 
+               verbose=TRUE)
