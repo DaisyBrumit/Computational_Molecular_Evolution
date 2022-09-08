@@ -1,0 +1,45 @@
+---
+title: "hw1_msa_circadianClocks"
+author: "Daisy Fry-Brumit"
+date: "2022-09-08"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(msa)
+library(phangorn)
+library(phytools)
+library(bios2mds)
+library(knitr)
+library(tinytex)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part 1: 
+
+### Question 1: 3 pts
+
+##### Provide an image of your alignment. 
+
+![clustalW](attachment:clustalW_align.pdf){width=100%}
+
+##### Are there some parts of the sequence that do not appear as well-aligned as others, or where the sequences just look very different from one another? 
+
+Broadly speaking, the tail end of the sequence is poorly conserved across all sequences, as well as a chunk of sequence early on in the FrogI species, some sort of insertion in the middle/end of the InsectJ species, and a messy area in the second block of sequence for all species.
+
+##### Which of the sequences looks the most different, and what is different about it?
+
+I would say that InsectJ looks the most distinct as it does contain a long insertion of some kind in the fifth chunk of sequences in this image.
+
+### Question 2: 2 pts
+
+##### Provide an image of your new Clustal-Omega alignment. 
+
+![image-3.png](attachment:image-3.png)
+![image-4.png](attachment:image-4.png)
+
+##### Can you see any differences between this alignment and the clustal-W alignment?
+
+Yes! The FrogI species is aligned differently in the beginning of this sequence (with missing gaps in the front end of the sequence instead of a few letters in as in ClustalW.
