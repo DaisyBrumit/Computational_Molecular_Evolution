@@ -2,7 +2,9 @@
 title: "hw2_geneticDistanceMethods_substitutionModels"
 author: "Daisy Fry-Brumit"
 date: "2022-09-19"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -27,9 +29,12 @@ aligns = msa(dnaSeqs, method="ClustalOmega") #align DNA seqs
 forPhang = msaConvert(aligns, type="phangorn::phyDat") #convert alignment so phangorn can use
 mt = modelTest(forPhang, model=c("JC","F81","K80","F84","TrN")) #test 5 models against the data
 write.table(mt, "modelTest_results.txt", quote=FALSE, sep="\t",row.names=FALSE, col.names=TRUE) # summarize results, output to .txt for easy viewing
+
+dna = as.DNAbin(forPhang) # convert from phydat object to dnabin object
+D = dist.dna(dna, model="TN93", gamma=TRUE)
 ```
 
-```{r test_output}
+```{r test_output, include=FALSE}
 knitr::kable(mt, caption = 'Model Test Output')
 ```
 
@@ -43,13 +48,42 @@ The lowest scoring model here is one of the Tamura-Nei models: TrN+G(4). The TrN
 * rates of subsittution are unequal between transitions and transversions
   + further, rates are unqual between the different types of transitions
   
-As such, it is a more complex model and includes 3 parameters (transition1, transition2, and transversion) to describe rates of substitution. The TrN + G(4) model specifically assumes 
+As such, it is a more complex model and includes 3 parameters (transition1, transition2, and transversion) to describe rates of substitution. The TrN + G(4) model specifically assumes that the rates of substitution follow a gamma(4) distribution through the length of the sequence.
 
-### Question 2 ()
+### Question 2 (1 pt)
+
+##### What model did you use in your command, and which option did you use for gamma?
+
+I used TN93 (T92 does not include gamma correction) and applied gamma correction.
 
 ## Part 2: Create and Compare Trees
 
-### Question 3 ()
+```{r, tree_create_&_compare, include=FALSE, results='hide'}
+# create UPGMA and NJ trees
+t.upgma = upgma(D) 
+t.nj = nj(D)
+
+# manually define outgroups in both trees for rooting
+t.upgma.root = root(phy=t.upgma, outgroup='1993a')
+t.nj.root = root(phy=t.nj, outgroup='1993a')
+
+# calculate multiple distance metrics to compare both trees
+t.dist = treedist(t.upgma.root, t.nj.root)
+```
+
+```{r upgma_plots, echo=FALSE, results='asis'}
+plot(t.upgma.root, main="UPGMA", cex=0.75)
+```
+```{r, nj_plot, echo=FALSE, results='asis'}
+plot(t.nj.root, main="Neighbor-Joining", cex=0.75)
+```
+### Question 3 (5pts)
+
+##### Provide your plots for the rooted UPGMA and rooted Neighbor-Joining trees (be sure they are labeled so I can tell which is which!). Describe any differences you see in the overall appearance of the two trees. Do the same clades appear in each tree? Do viruses collected in later years branch off from the viruses of previous years (like we would expect)?
+
+```{r test_output, include=FALSE}
+knitr::kable(t.dist, caption = 'Tree Dist Output')
+```
 
 ### Question 4 ()
 
@@ -64,21 +98,6 @@ As such, it is a more complex model and includes 3 parameters (transition1, tran
 ### Question 8 ()
 
 ### Question 9 ()
-
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ## References
 
