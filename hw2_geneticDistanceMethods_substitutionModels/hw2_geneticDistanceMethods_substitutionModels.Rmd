@@ -81,23 +81,79 @@ plot(t.nj.root, main="Neighbor-Joining", cex=0.75)
 
 ##### Provide your plots for the rooted UPGMA and rooted Neighbor-Joining trees (be sure they are labeled so I can tell which is which!). Describe any differences you see in the overall appearance of the two trees. Do the same clades appear in each tree? Do viruses collected in later years branch off from the viruses of previous years (like we would expect)?
 
-```{r test_output, include=FALSE}
+```{r tree_dist, include=FALSE}
 knitr::kable(t.dist, caption = 'Tree Dist Output')
 ```
 
 ### Question 4 ()
 
-### Question 5 ()
+```{r bootstrapping, include=FALSE, results='hide'}
+myBoots = boot.phylo(t.nj.root, dna, function(x) root(nj(dist.dna(x, model="TN93", gamma=TRUE)),1), trees=TRUE)
+```
+```{r, plot_bootstrap, echo=FALSE, results='asis'}
+plot(t.nj.root, main="NJ W/ Bootstrapping Values", cex=0.5, edge.width=2)
+nodelabels(myBoots$BP, cex=0.4)
+```
 
-### Question 6 ()
+### Question 5 (3pts)
+
+##### Provide a plot of your bootstrapped tree. Are there any nodes in your tree that seem to have very weak bootstrap support (i.e. less than 50%)? How many of these weakly supported nodes do you see? Which node has the weakest support, and what clade is this node at the base of? If it is hard to see exactly where the nodes are with the bootstrap labels on them, you might also want to refer back to your original plot without the labels to help you
+
+There is one node early on in the tree (around 1944a and 1993c) with 41% bootstrapping support, two more in the 1977 clade with 25 and 37%, 40% that stands between 1998 and 2001+ groups, and 36% support that reults in a terminal branch leading to 2005a.
+
+```{r majorityRule_consensus, results='asis', echo=FALSE}
+mjtree = consensus(myBoots$trees, p=0.5)
+mjtree.root = root(mjtree, outgroup='1993a')
+plot(mjtree.root, cex=0.5, edge.width=2, main="Majority Rule Consensus Tree")
+```
+### Question 6 (1pt)
+
+##### Provide a plot of your majority rule consensus tree.
 
 ## Part 3: Find the Most Parsimonious Tree
 
-### Question 7 ()
+```{r parsimony, echo=FALSE, include=FALSE}
+parsimony(t.upgma.root, forPhang)
+parsimony(t.nj.root, forPhang)
 
-### Question 8 ()
+# see if we can get a more parsimonious tree from the nj method
+tre.pars = pratchet(forPhang, start=t.nj)
 
-### Question 9 ()
+N <- length(t.nj.root$tip.label)
+toCollapse <- match(which(myBoots$BP<50)+N, t.nj.root$edge[,2])
+t.nj.root$edge.length[toCollapse] = 0
+new.tree = di2multi(t.nj.root, tol=0.00001)
+```
+
+### Question 7 (3pts)
+
+##### What are your parsimony scores for your UPGMA and Neighbor-Joining trees? Given that a lower score is better, which of your trees is the most parsimonious? Based on what you know about the definition of parsimony, what does it mean when we say that one tree is more parsimonious than another? i.e. How should we interpret this result?
+
+UPGMA tree yields a score of 380, and nj yields 340, so they aren't too far apart but NJ performs better here. Basically this means that our neighbor joining generated tree can be explained in fewer evolutionary/mutant steps than our UPGMA generated tree. By some schools of thought, this might make the neighbor joining generated tree a better tree to accept, though there is some debate about that in the relevant communities.  
+
+### Question 8 (1pt)
+
+##### Were you able to improve on the parsimony score you got with the neighbor-joining tree?
+
+No!
+
+```{r max_pars_tree, echo=FALSE, results='asis'}
+library(basetheme)
+library(epicontacts)
+
+# plot most parsimonious tree
+plot(new.tree, type='unr', show.tip=FALSE, edge.width=2)
+title('Maximum-parsimony Tree')
+year= as.numeric(gsub("[a-c]", "", names(forPhang)))
+tiplabels(t.nj.root$tip.label, bg=transp(num2col(year),0.7), cex=0.5, fg='transparent')
+```
+
+
+### Question 9 (3pts)
+
+##### Provide the plot for your final tree. Even though there are still some uncertain relationships, can you now see any kind of trend with respect to the years the viruses were sampled and where they appear on the tree? Describe your new tree and the trends that you see.
+
+This tree does show a pretty cool and consistent trend that clades tend to form around general chronological points (based on when they were samples), with earlier years seen in cool colors at the top left of this figure (above), a slightly jumbled collection of points from 1997 to 2001 in greens and yellows in the center, and later collection years from 2003 and beyond in warm colors on the bottom right of the figure. 
 
 ## References
 
