@@ -72,20 +72,28 @@ t.dist = treedist(t.upgma.root, t.nj.root)
 ```
 
 ```{r upgma_plots, echo=FALSE, results='asis'}
-plot(t.upgma.root, main="UPGMA", cex=0.75)
+plot(t.upgma.root, main="UPGMA", cex=0.5)
 ```
 ```{r, nj_plot, echo=FALSE, results='asis'}
-plot(t.nj.root, main="Neighbor-Joining", cex=0.75)
+plot(t.nj.root, main="Neighbor-Joining", cex=0.5)
 ```
 ### Question 3 (5pts)
 
 ##### Provide your plots for the rooted UPGMA and rooted Neighbor-Joining trees (be sure they are labeled so I can tell which is which!). Describe any differences you see in the overall appearance of the two trees. Do the same clades appear in each tree? Do viruses collected in later years branch off from the viruses of previous years (like we would expect)?
 
-```{r tree_dist, include=FALSE}
+UPGMA and NJ do mix the chronology/grouping between the viruses collected in 1994 and 1993, and 1998 with the early 2000's. Other than that, the clades appear in ways that do make chronological sense with regards to their collection times, especially with UPGMA output. 
+
+UPGMA outputs in a cleaner way that is easier for me to read, while the NJ method is harder to decipher at first glance. It appears that we have 2 separate instances of early 2000's clades resulting from 1999. NJ also jumps straight from 2003 to 2005 in one location. All in all, it strikes me as a messier tree that is harder to make sense of. 
+
+### Question 4 (3pts)
+
+##### What is the symmetric difference, branch score difference, and path difference between your two trees? Which number implies the biggest difference in the trees? Based on what you know about the definition of these metrics, why would one score be much higher than the others? Does your highest score make sense given what you see when you plot the two trees?
+
+See below for difference score outputs. As you can see, the path difference is much, much higher than our others metrics, implying a difference in not just the clades, but the paths taken to generate the clades in the trees. This makes sense as the inner nodes differ from the UPGMA and NJ generated trees (while Robinson-Foulds/symmetric difference is more concerned with final clade output) according to our plots.
+
+```{r tree_dist, echo=FALSE}
 knitr::kable(t.dist, caption = 'Tree Dist Output')
 ```
-
-### Question 4 ()
 
 ```{r bootstrapping, include=FALSE, results='hide'}
 myBoots = boot.phylo(t.nj.root, dna, function(x) root(nj(dist.dna(x, model="TN93", gamma=TRUE)),1), trees=TRUE)
@@ -106,6 +114,7 @@ mjtree = consensus(myBoots$trees, p=0.5)
 mjtree.root = root(mjtree, outgroup='1993a')
 plot(mjtree.root, cex=0.5, edge.width=2, main="Majority Rule Consensus Tree")
 ```
+
 ### Question 6 (1pt)
 
 ##### Provide a plot of your majority rule consensus tree.
