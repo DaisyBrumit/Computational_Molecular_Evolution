@@ -1,0 +1,115 @@
+---
+title: 'Homework 3: Max Likelihood & Ancestral State Reconstruction'
+author: "Daisy Fry-Brumit"
+date: "09/26/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(msa)
+library(phangorn)
+library(phytools)
+```
+
+## Background
+
+For this exercise, you will use maximum likelihood and consensus tree methods to look at the phylogenetic relationships among several species of snakes, lizards, and these legless lizard intermediates to determine whether or not the evolution of limblessness has happened more than once.
+
+The dataset for this exercise consists of 2 sets of sequences corresponding to 2 different genes: SLC8A1^1^ and R35^2^. Use the links associated with each gene name to download the fasta files. Each file contains DNA sequences from 12 different reptile species.
+
+## Use Neighbor-Joining Trees to Determine Which Gene To Use
+
+```{r determine_gene_for_use, include=FALSE}
+# need to read your sequences into R
+r_seqs = readDNAStringSet('Reptiles_R35.fasta')
+slc_seqs = readDNAStringSet('Reptiles_SLC8A1.fasta')
+
+# align seqs (clustal omega)
+r_aligns = msa(r_seqs, method='ClustalOmega')
+slc_aligns = msa(slc_seqs, method='ClustalOmega')
+
+r_forPhang = msaConvert(r_aligns, type="phangorn::phyDat")
+slc_forPhang = msaConvert(slc_aligns, type="phangorn::phyDat")
+
+# get distance metrics (K80 + G substitution model)
+r_dna = as.DNAbin(r_forPhang) # convert from phydat object to dnabin object
+r_D = dist.dna(r_dna, model="K80", gamma=TRUE)
+
+slc_dna = as.DNAbin(slc_forPhang) # convert from phydat object to dnabin object
+slc_D = dist.dna(slc_dna, model="K80", gamma=TRUE)
+
+# create trees (NJ method, alligator as outgroup)
+r_nj = nj(r_D)
+r_nj_root = root(phy=r_nj, outgroup='Alligator')
+
+slc_nj = nj(slc_D)
+slc_nj_root = root(phy=slc_nj, outgroup='Alligator')
+
+# calculate multiple distance metrics to compare both trees
+t.dist = treedist(slc_nj_root, r_nj_root)
+```
+
+### Question 1 (2pts)
+
+#####  Provide the plot for your R35 neighbor-joining tree. Make sure that the tip labels are clearly readable.
+
+```{r plot_R35, echo=FALSE, results='asis'}
+plot(r_nj_root, main="Rooted R35 Tree", cex=0.5)
+```
+
+### Question 2 (2pts)
+
+##### Provide the plot for you SLC8A1 tree; make sure the labels are readable. 
+
+```{r plot_SLC8A1, echo=FALSE, results='asis'}
+plot(slc_nj_root, main="Rooted SLC8A1 Tree", cex=0.6)
+```
+
+### Question 3 (1pt)
+
+#####  How many clades (or bipartitions) are unique to EACH tree? Which score tells you this?
+
+```{r tree_dist, echo=FALSE}
+knitr::kable(t.dist, caption = 'Distance Metrics Output')
+```
+
+The Symmetric (Robinson Foulds Distance) tells us the **sum** of the number of clades unique to each tree. So, in total, there are 16 unique clades in each tree (or 8 each).
+
+### Question 4 (1pt)
+
+##### Which gene (R35 or SLC8A1) shows the correct relationships?
+
+## Run RAxML with 1000 Bootstrap Replicates
+
+## Question 5 (3 pts)
+
+##### Copy and paste your 3 different RAxML commands (with all parameters), to show how you got 3 independent runs with the same data.
+
+## Question 6 (1 pt)
+
+##### Did your results appear to converge? Why or why not?
+
+
+## Plot your RAxML Tree with Bootstrap Values
+
+### Question 7 (5 pts) 
+
+##### Provide the plot of your best RAxML tree with bootstrap support values. Make sure it is clearly labeled, and all labels are legible.
+
+## Perform Ancestral State Reconstruction
+
+### Question 8 (5 pts)
+
+##### Provide the plot of your RAxML tree with reconstructed states based on the "all equal" transition cost model. Make sure tip labels are clearly visible, and provide a legend to indicate which state is represented by each color in your plot.  According to these results, how many times do you think limblessness evolved? Does this suggest multiple evolutions of "4-leggedness"?
+
+### Question 9 (5 pts)
+
+##### Provide the plot of your final tree with ancestral state reconstructions using the custom matrix. Again, make sure you have clear labels and a legend.  How does this tree compare to the previous tree in terms of the number of transitions to limblessness or 4-leggedness? 
+
+## References
+
+^1^ Reptiles_SLC8A1.fasta
+
+^2^ Reptiles_R35.fasta
