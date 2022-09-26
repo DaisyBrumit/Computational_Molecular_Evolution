@@ -75,28 +75,46 @@ plot(slc_nj_root, main="Rooted SLC8A1 Tree", cex=0.6)
 knitr::kable(t.dist, caption = 'Distance Metrics Output')
 ```
 
-The Symmetric (Robinson Foulds Distance) tells us the **sum** of the number of clades unique to each tree. So, in total, there are 16 unique clades in each tree (or 8 each).
+The Symmetric (Robinson Foulds Distance) tells us the **sum** of the number of clades unique to each tree. So there are 8 unique clades in each tree.
 
 ### Question 4 (1pt)
 
 ##### Which gene (R35 or SLC8A1) shows the correct relationships?
 
+The R35 gene shows the correct relationships.
+
 ## Run RAxML with 1000 Bootstrap Replicates
+
+```{r RAxML, echo=FALSE}
+write.phylip(r_aligns, "Reptiles_R35.phy") # convert aligns to phylip file
+```
 
 ## Question 5 (3 pts)
 
 ##### Copy and paste your 3 different RAxML commands (with all parameters), to show how you got 3 independent runs with the same data.
 
+![script 1](slurmPic.jpg)
+![script 2](slurmPic1.jpg)
+
 ## Question 6 (1 pt)
 
 ##### Did your results appear to converge? Why or why not?
 
+They do! 
 
 ## Plot your RAxML Tree with Bootstrap Values
 
 ### Question 7 (5 pts) 
 
 ##### Provide the plot of your best RAxML tree with bootstrap support values. Make sure it is clearly labeled, and all labels are legible.
+
+
+```{r bootstrapping, echo=FALSE, results='asis'}
+my.tree = read.tree("hw3_run1/RAxML_bestTree.reptilesBoot")
+my.boot = read.tree("hw3_run1/RAxML_bootstrap.reptilesBoot")
+
+plotBS(tree=my.tree, BStrees=my.boot, cex=0.75, type="phylogram", p=0, bs.col="red")
+```
 
 ## Perform Ancestral State Reconstruction
 
