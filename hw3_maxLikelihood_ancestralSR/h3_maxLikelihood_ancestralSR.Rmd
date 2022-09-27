@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(msa)
 library(phangorn)
 library(phytools)
+library(castor)
 ```
 
 ## Background
@@ -117,14 +118,62 @@ plotBS(tree=my.tree, BStrees=my.boot, cex=0.75, type="phylogram", p=0, bs.col="r
 ```
 
 ## Perform Ancestral State Reconstruction
+```{r ASR include=False}
+mltree = read.tree("hw3_run1/RAxML_bestTree.reptilesBoot")
+TreeID = c("DragonLizard","AgamaLizard","Chamaeleon","Copperhead","Python","BoaConstrictor","Tuatara","WormLizard","GlassLizard","Galliwasp","CaliforniaLeglessLizard","Alligator")
+NumLegs = c(4,4,4,0,0,0,4,0,0,0,0,4)
+names(NumLegs) = TreeID
+
+adj.NumLegs = NumLegs
+NumLegs[which(NumLegs==0)] = 1
+NumLegs[which(NumLegs==4)] = 2
+
+m = match(mltree$tip.label, names(NumLegs))
+adj.NumLegs = NumLegs[m]
+
+mp_equal = asr_max_parsimony(tree=mltree, tip_states=adj.NumLegs, Nstates=2, transition_costs="all_equal")
+
+pie.matrix = matrix(mp_equal$ancestral_likelihoods, ncol=2)
+rownames(pie.matrix) = seq(12,22)
+colnames(pie.matrix) = c("Legless", "Has Legs")
+```
 
 ### Question 8 (5 pts)
 
 ##### Provide the plot of your RAxML tree with reconstructed states based on the "all equal" transition cost model. Make sure tip labels are clearly visible, and provide a legend to indicate which state is represented by each color in your plot.  According to these results, how many times do you think limblessness evolved? Does this suggest multiple evolutions of "4-leggedness"?
 
+```{r ASR plot, echo=False, results='asis'}
+plotTree(mltree, offset=0.5)
+tiplabels(pie = to.matrix(adj.NumLegs, sort(unique(adj.NumLegs))), piecol = c("pink", "blue"), cex = 0.3)
+nodelabels(node = as.numeric(rownames(pie.matrix)), pie = pie.matrix, piecol = c("pink", "blue"), cex=0.5)
+add.simmap.legend(leg=c("Legless", "Has Legs"), colors=c("pink", "blue"), prompt=FALSE, x=0.55, y=1.5)
+```
+
+It would appear that limblessness has evolved twice since the common ancestor (once by the Tuatara, and once between the worm lizard and the clade above it). The tree plot is showing no uncertainty (no splits in the pie charts)
+
 ### Question 9 (5 pts)
 
+This time, set up a custom transition matrix, with the transition from 0 legs to 4 legs being 10 times more costly than the transition from 4 legs to 0. Then re-run the ancestral state reconstruction using maximum parsimony with the custom matrix, and plot your new results with pie charts for the reconstructed values.
+
+```{r ASR_custom, include = FALSE}
+Q = matrix(data=c(0,1,10,0), nrow=2, dimnames=list(c(1,2), c(1,2)))
+
+mp_custom = asr_max_parsimony(tree=mltree, tip_states=adj.NumLegs, Nstates=2, transition_costs=Q)
+pie.matrix2 = matrix(mp_custom$ancestral_likelihoods, ncol=2)
+rownames(pie.matrix2) = seq(12,22)
+colnames(pie.matrix2) = c("Legless", "Has Legs")
+```
+
 ##### Provide the plot of your final tree with ancestral state reconstructions using the custom matrix. Again, make sure you have clear labels and a legend.  How does this tree compare to the previous tree in terms of the number of transitions to limblessness or 4-leggedness? 
+
+```{r ASR_custom_plot, echo=False, results='asis'}
+plotTree(mltree, offset=0.5)
+tiplabels(pie = to.matrix(adj.NumLegs, sort(unique(adj.NumLegs))), piecol = c("pink", "blue"), cex = 0.3)
+nodelabels(node = as.numeric(rownames(pie.matrix2)), pie = pie.matrix2, piecol = c("pink", "blue"), cex=0.5)
+add.simmap.legend(leg=c("Legless", "Has Legs"), colors=c("pink", "blue"), prompt = FALSE, 
+                  x=0.55, y=1.5)
+```
+This tree actually makes less sense to me as it would seem there are multiple transitions from leglessness, to having legs, and back again even within 2 completely legless clades. I suppose it's possible but it violates our notion of parsimonious tree building, for sure. 
 
 ## References
 
