@@ -1,0 +1,16 @@
+SpeciesName	TreeID	CommonName	Dom_or_Wild	Latitude	Longitude	Location
+C. argyrosperma subsp argyrosperma	argyrospe	Cushaw squash	Dom	24	-106.41667	NW Mexico
+C. ficifolia	ficifolia	Figleaf gourd	Dom	-6.934667031	-79.23629364	Peru
+C. maxima	maxima	Giant pumpkin	Dom	-25.25883291	-60.83874434	Argentina/Uruguay border
+C. moschata	moschata	Butternut squash	Dom	16.32622588	-90.04040447	Guatemala
+C. pepo var ovifera	ovifera	Ornamental gourd	Dom	36.02757594	-93.90759199	Arkansas
+C. pepo var pepo	pepo	Field pumpkin	Dom	21.60507	-98.662163	NE Mexico
+C. digitata	digitata	Bitter squash	Wild	29.54666667	-110.43317	NW Mexico
+C. ecuadorensis	ecuadoren	Ecuadorian squash	Wild	-0.451455509	-80.27424533	Ecuador
+C. pepo var fraterna	fraterna	Wild pumpkin	Wild	22.7713888	-99.280555	NE Mexico
+C. foetidissima	foetidiss	Buffalo gourd	Wild	27.8413725	-107.58621	NW Mexico
+C. lundelliana	lundellia	Horse squash	Wild	18.52716667	-89.552806	S Mexico
+C. pedatifolia	pedatifol	Pedate-leafed gourd	Wild	29.54666667	-110.43317	NW Mexico
+C. argyrosperma subsp sororia	sororia	Sister squash	Wild	24.7666667	-107.15	S Mexico
+C. pepo var. texana	texana	Texas gourd	Wild	30.7192234	-96.24769074	Texas
+Citrullus lanatus	citrullus	Wild watermelon	Dom	30.60540251	31.16065184	Egypt
