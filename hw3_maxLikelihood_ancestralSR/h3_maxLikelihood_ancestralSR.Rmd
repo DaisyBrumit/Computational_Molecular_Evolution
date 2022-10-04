@@ -2,7 +2,9 @@
 title: 'Homework 3: Max Likelihood & Ancestral State Reconstruction'
 author: "Daisy Fry-Brumit"
 date: "09/26/2022"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -56,7 +58,8 @@ t.dist = treedist(slc_nj_root, r_nj_root)
 
 #####  Provide the plot for your R35 neighbor-joining tree. Make sure that the tip labels are clearly readable.
 
-```{r plot_R35, echo=FALSE, results='asis'}
+
+```{r plot_R35, echo=FALSE, results='asis', fig.align = 'center'}
 plot(r_nj_root, main="Rooted R35 Tree", cex=0.5)
 ```
 
@@ -64,7 +67,8 @@ plot(r_nj_root, main="Rooted R35 Tree", cex=0.5)
 
 ##### Provide the plot for you SLC8A1 tree; make sure the labels are readable. 
 
-```{r plot_SLC8A1, echo=FALSE, results='asis'}
+
+```{r plot_SLC8A1, echo=FALSE, results='asis', fig.align = 'center'}
 plot(slc_nj_root, main="Rooted SLC8A1 Tree", cex=0.6)
 ```
 
@@ -94,14 +98,23 @@ write.phylip(r_aligns, "Reptiles_R35.phy") # convert aligns to phylip file
 
 ##### Copy and paste your 3 different RAxML commands (with all parameters), to show how you got 3 independent runs with the same data.
 
+
 ![script 1](slurmPic.jpg)
+
+
 ![script 2](slurmPic1.jpg)
 
 ## Question 6 (1 pt)
 
 ##### Did your results appear to converge? Why or why not?
 
-They do! 
+run_1 likelihood: -4082.569435
+
+run_2 likelihood: -4082.569434
+
+run_3 likelihood: -4082.569434
+
+The highly similar optimized likelihoods suggest convergence.
 
 ## Plot your RAxML Tree with Bootstrap Values
 
@@ -110,7 +123,7 @@ They do!
 ##### Provide the plot of your best RAxML tree with bootstrap support values. Make sure it is clearly labeled, and all labels are legible.
 
 
-```{r bootstrapping, echo=FALSE, results='asis'}
+```{r bootstrapping, align = "left", echo=FALSE, results='asis', fig.align = 'center'}
 my.tree = read.tree("hw3_run1/RAxML_bestTree.reptilesBoot")
 my.boot = read.tree("hw3_run1/RAxML_bootstrap.reptilesBoot")
 
@@ -118,7 +131,7 @@ plotBS(tree=my.tree, BStrees=my.boot, cex=0.75, type="phylogram", p=0, bs.col="r
 ```
 
 ## Perform Ancestral State Reconstruction
-```{r ASR include=False}
+```{r ASRecon, include=FALSE}
 mltree = read.tree("hw3_run1/RAxML_bestTree.reptilesBoot")
 TreeID = c("DragonLizard","AgamaLizard","Chamaeleon","Copperhead","Python","BoaConstrictor","Tuatara","WormLizard","GlassLizard","Galliwasp","CaliforniaLeglessLizard","Alligator")
 NumLegs = c(4,4,4,0,0,0,4,0,0,0,0,4)
@@ -142,7 +155,7 @@ colnames(pie.matrix) = c("Legless", "Has Legs")
 
 ##### Provide the plot of your RAxML tree with reconstructed states based on the "all equal" transition cost model. Make sure tip labels are clearly visible, and provide a legend to indicate which state is represented by each color in your plot.  According to these results, how many times do you think limblessness evolved? Does this suggest multiple evolutions of "4-leggedness"?
 
-```{r ASR plot, echo=False, results='asis'}
+```{r ASR_plot, echo=FALSE, results='asis', fig.align = 'center'}
 plotTree(mltree, offset=0.5)
 tiplabels(pie = to.matrix(adj.NumLegs, sort(unique(adj.NumLegs))), piecol = c("pink", "blue"), cex = 0.3)
 nodelabels(node = as.numeric(rownames(pie.matrix)), pie = pie.matrix, piecol = c("pink", "blue"), cex=0.5)
@@ -156,7 +169,7 @@ It would appear that limblessness has evolved twice since the common ancestor (o
 This time, set up a custom transition matrix, with the transition from 0 legs to 4 legs being 10 times more costly than the transition from 4 legs to 0. Then re-run the ancestral state reconstruction using maximum parsimony with the custom matrix, and plot your new results with pie charts for the reconstructed values.
 
 ```{r ASR_custom, include = FALSE}
-Q = matrix(data=c(0,1,10,0), nrow=2, dimnames=list(c(1,2), c(1,2)))
+Q = matrix(data=c(0,10,1,0), nrow=2, dimnames=list(c(1,2), c(1,2)))
 
 mp_custom = asr_max_parsimony(tree=mltree, tip_states=adj.NumLegs, Nstates=2, transition_costs=Q)
 pie.matrix2 = matrix(mp_custom$ancestral_likelihoods, ncol=2)
@@ -166,14 +179,14 @@ colnames(pie.matrix2) = c("Legless", "Has Legs")
 
 ##### Provide the plot of your final tree with ancestral state reconstructions using the custom matrix. Again, make sure you have clear labels and a legend.  How does this tree compare to the previous tree in terms of the number of transitions to limblessness or 4-leggedness? 
 
-```{r ASR_custom_plot, echo=False, results='asis'}
+```{r ASR_custom_plot, echo=FALSE, results='asis', fig.align='center'}
 plotTree(mltree, offset=0.5)
 tiplabels(pie = to.matrix(adj.NumLegs, sort(unique(adj.NumLegs))), piecol = c("pink", "blue"), cex = 0.3)
 nodelabels(node = as.numeric(rownames(pie.matrix2)), pie = pie.matrix2, piecol = c("pink", "blue"), cex=0.5)
 add.simmap.legend(leg=c("Legless", "Has Legs"), colors=c("pink", "blue"), prompt = FALSE, 
                   x=0.55, y=1.5)
 ```
-This tree actually makes less sense to me as it would seem there are multiple transitions from leglessness, to having legs, and back again even within 2 completely legless clades. I suppose it's possible but it violates our notion of parsimonious tree building, for sure. 
+This tree actually makes less sense to me as it would seem there are multiple transitions from leglessness, to having legs, and back again even within 2 completely legless clades. I suppose it's possible but it violates our notion of parsimonious tree building, I think.
 
 ## References
 
