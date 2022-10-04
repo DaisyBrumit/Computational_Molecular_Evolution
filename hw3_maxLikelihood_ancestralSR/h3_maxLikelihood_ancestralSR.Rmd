@@ -147,7 +147,7 @@ adj.NumLegs = NumLegs[m]
 mp_equal = asr_max_parsimony(tree=mltree, tip_states=adj.NumLegs, Nstates=2, transition_costs="all_equal")
 
 pie.matrix = matrix(mp_equal$ancestral_likelihoods, ncol=2)
-rownames(pie.matrix) = seq(12,22)
+rownames(pie.matrix) = seq(12,22) # should be 13 and 23
 colnames(pie.matrix) = c("Legless", "Has Legs")
 ```
 
@@ -173,7 +173,7 @@ Q = matrix(data=c(0,10,1,0), nrow=2, dimnames=list(c(1,2), c(1,2)))
 
 mp_custom = asr_max_parsimony(tree=mltree, tip_states=adj.NumLegs, Nstates=2, transition_costs=Q)
 pie.matrix2 = matrix(mp_custom$ancestral_likelihoods, ncol=2)
-rownames(pie.matrix2) = seq(12,22)
+rownames(pie.matrix2) = seq(12,22) # should be 13 and 23
 colnames(pie.matrix2) = c("Legless", "Has Legs")
 ```
 
