@@ -14,6 +14,7 @@ library(phytools)
 library(castor)
 library(bios2mds)
 library(tidyverse)
+library(lmtest)
 
 # read in info
 meta = read.delim("pumpkin_info_for_midterm.txt", sep= "\t", header = TRUE)
@@ -170,7 +171,9 @@ nodelabels(upgma_boot$BP, cex=0.4)
 
 Fortunately, the NJ generated tree has perfect bootstrapping values and lends a good deal of security when inferring domestication events. Since the last step, I've pretty much known that the NJ method is preferable to the UPGMA method given our reference and tree comparisons, but it never hurts to compile extra evidence, especially when the runtime for doing so is short. **Going forward, I'll use the NJ tree output where appropriate.**
 
-To run RAxML for the appropriate orthologous group, I used the appropriate subset of data, converted it to phylip format, and executed the job script from the HPC cluster. I ran 3 jobs on my data and checked for convergence. All 3 Final ML Optimization Likelihood values were idenitcal at -18836.808882. I downloaded the results from one of the runs to produce the figures below.
+To run RAxML for the appropriate orthologous group, I used the appropriate subset of data, converted it to phylip format, and executed the job script from the HPC cluster. I ran 3 jobs on my data and checked for convergence. All 3 Final ML Optimization Likelihood values were idenitcal at -18836.808882. I downloaded the results from one of the runs to use for subsequent steps.
+
+To determine the most likely transition model, I input my RAxML tree results and fit the "all results different" option with `ace` as shown in the Ancestral State Reconstruction practice on Canvas. Then I did the same thing but with the equal states option and compared output using a chi-squared test, which yielded a value of 0.7962596.
 
 ```{r simplify, echo= FALSE, include=FALSE}
 # navigating around full input data has become tedious. Subset input for only "D" labels and use that.
@@ -201,35 +204,56 @@ upgma_comp_D = treedist(upgmaD_root, refTree) # still good
 # output phylip
 write.phylip(align_D, "pumpkins_D.phy")
 
-# Ancestral State Reconstruction based on RAxML output
+# Set up RAxML tree and generate "wild" labels and species names
 mlTree = read.tree('RAxML/RAxML_bestTree.pumpkinsBoot1')
 TreeID = c("digitata","foetidiss","pedatifol","ficifolia","ecuadoren","maxima","lundellia",
            "pepo","fraterna","ovifera","texana","argyrospe","sororia","moschata","citrullus")
 wild = c(2,2,2,1,2,1,2,1,2,1,2,1,2,1,1)
 names(wild) = TreeID
 
-mp_equal = asr_max_parsimony(tree=mlTree, tip_states=wild, Nstates = 2, transition_costs = "all_equal")
+# find the most likely transition model (discrete, as used in class practice)
+fitARD = ace(x=wild, phy=mlTree, type="discrete", model="ARD")
+fitER = ace(x=wild, phy=mlTree, type="discrete", model="ER")
+x = 2*(fitARD$loglik - fitER$loglik)
+pchisq(x, df=1, lower.tail = FALSE) # 0.7962496
 
-pie_matrix = matrix(mp_equal$ancestral_likelihoods, ncol=2)
-rownames(pie_matrix) = seq(15,28)
+# build a pie matrix using ARD results
+pie_matrix = matrix(fitER$lik.anc, ncol=2)
+rownames(pie_matrix) = seq(16,29)
 colnames(pie_matrix) = c("domestic", "wild")
 ```
 
+The chi-squared value of >0.7 suggests that there isn't a significant difference between ER and ARD models, so I assume **the equal rates model is the best fit for the data** and produced the tree below:
+
 ```{r RAxML_equal_tree, echo=FALSE, fig.align='center'}
-plot(mlTree, main="RAxML output with equal likelihood")
+plot(mlTree, main="RAxML output with ARD-fitted transition costs")
 tiplabels(pie = to.matrix(wild, sort(unique(wild))), piecol=c("pink","blue"), cex=0.3)
-nodelabels(node=as.numeric(rownames(pie_matrix)), pie=pie_matrix, piecol=c("pink", "blue"), cex=0.5)
-add.simmap.legend(leg=c("domestic", "wild"), colors=c("pink", "blue"), prompt=FALSE, x=1, y=1.5)
+nodelabels(node=as.numeric(rownames(pie_matrix)), pie=pie_matrix, piecol=c("pink", "blue"), cex=0.4)
+add.simmap.legend(leg=c("domestic", "wild"), colors=c("pink", "blue"), prompt=FALSE, x=1, y=1.6)
 ```
 
+With this tree, I cannot get a clear read on how many independent domestication events occurred because there's a 50/50 chance of each ancestral state being domesticated or wild, leaving me with little basis for saying *where* domestication occurred.
 
 ## Question 4: If you assume domestication is irreversible, then how many separate times did domestication occur in these species? (10 pts)
+
+To answer this question, I simply created a custom transition probability matrix Q with no chance of redomestication and printed the corresponding tree:
 
 ```{r code_Q4, echo=TRUE}
 Q = matrix(data=c(0,0,1,0), nrow=2, dimnames=list(c(1,2), c(1,2)))
 
+mp_custom = asr_max_parsimony(tree=mlTree, tip_states=wild, Nstates=2, transition_costs=Q)
+
+### Plot the new results
+pie_matrix2 = matrix(mp_custom$ancestral_likelihoods, ncol=2)
+rownames(pie_matrix2) = seq(16,29)
+colnames(pie_matrix2) = c("domestic", "wild")
+plotTree(mlTree, offset=0.5)
+tiplabels(pie = to.matrix(wild, sort(unique(wild))), piecol = c("pink", "blue"), cex = 0.3)
+nodelabels(node = as.numeric(rownames(pie_matrix2)), pie = pie_matrix2, piecol = c("pink", "blue"), cex=0.5)
+add.simmap.legend(leg=c("domestic", "wild"), colors=c("pink", "blue"), prompt=FALSE, x=1, y=1.5)
 ```
 
+Assuming redomestication is not possible, we see 7 independent domestication events, one for each terminal node/domestic species represented in the tree.
 
 ## Question 5: Where was C. ficifolia (the fig-leaf gourd) most likely from? (10 pts)
 
