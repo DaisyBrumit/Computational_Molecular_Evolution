@@ -1,0 +1,42 @@
+---
+title: 'HW 4: Bayes-- Concatenated and Coalescent Analyses'
+author: "Daisy Fry-Brumit"
+date: "2022-10-18"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Part One: Determine MrBayes Settings Using a Single Gene
+
+```{r readIn, echo=FALSE}
+#Read the sequences for the first locus (loc0114)
+
+#align them using Clustal-Omega. 
+
+# write your alignment to a nexus format file that can be read by MrBayes
+```
+
+### 1: In your MrBayes run, what settings did you use for nst=, rates=, and statefreqpr=, in order to run the K80 +I model? (3 pts)
+
+### Question 2: Do the values in your .pstat file suggest that the MCMC achieved convergence? Why or why not? Please list at least 2 pieces of evidence that suggest your run converged. If you want, you may use values from other files instead of just .pstat. (3 pts)
+
+### Question 3: Provide a plot of your rooted consensus tree from MrBayes, with posterior probability values at each node. Make sure your plot is clearly labeled and readable. (2 pts)
+
+### Question 4: Provide a plot of your rooted Maximum Clade Credibility tree (support values optional). (1 pt)
+
+## Part Two: Concatenated and Partitioned Analysis in MrBayes
+
+### Question 5: Once you have set up your model, please paste in the final block of code/settings from your mb_input file, including the partitions as well as the parameter settings. (5 pts)
+
+### Question 6: Provide a plot of your consensus tree from the concatenated run of MrBayes with posterior probability values at each node. (2 pts)
+
+### Question 7: Use treedist() to compare the maximum clade credibility (MCC) tree from your concatenated run with the MCC from just the first locus (0114). How different are the two trees? (1 pt)
+
+## Part Three: Run a Coalescent Analysis with ASTRAL
+
+### Question 8: Provide the plot of your ASTRAL tree with posterior probability values at each node. Make sure the tree is clearly labeled and readable. (5 pts)
+
+### Question 9: Compare your ASTRAL tree with your MCC tree from Part Two (from the concatenated run).  Disregarding the branch length scores (since we manipulated the branch lengths) are the two trees identical in terms of topology? What does this result mean in terms of whether or not there was a lot of discordance among the gene trees? (3 pts)
