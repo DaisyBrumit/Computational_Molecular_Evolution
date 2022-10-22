@@ -7,19 +7,32 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(msa)
+library(phangorn)
+library(phytools)
 ```
 
 ## Part One: Determine MrBayes Settings Using a Single Gene
 
 ```{r readIn, echo=FALSE}
-#Read the sequences for the first locus (loc0114)
-
-#align them using Clustal-Omega. 
+#Read the sequences for the first locus (loc0114) & align w/ Clustal-Omega
+loc0114_seqs <- readDNAStringSet("Roses/loc0114.fasta")
+loc0114_aln <- msa(loc0114_seqs, method = 'ClustalOmega')
 
 # write your alignment to a nexus format file that can be read by MrBayes
+write.nexus.data(as.DNAbin(loc0114_aln), "loc0114_aln.nex")
 ```
 
 ### 1: In your MrBayes run, what settings did you use for nst=, rates=, and statefreqpr=, in order to run the K80 +I model? (3 pts)
+
+**Model settings for MrBayes run**
+
+| Parameter | Value |
+| --- | --- |
+| nst | 2 |
+| rates | propinv |
+| statefreqpr | fixed(equal) |
 
 ### Question 2: Do the values in your .pstat file suggest that the MCMC achieved convergence? Why or why not? Please list at least 2 pieces of evidence that suggest your run converged. If you want, you may use values from other files instead of just .pstat. (3 pts)
 

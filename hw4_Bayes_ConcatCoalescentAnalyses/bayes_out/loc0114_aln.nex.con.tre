@@ -1,0 +1,43 @@
+#NEXUS
+[ID: 9935233164]
+begin taxa;
+	dimensions ntax=12;
+	taxlabels
+		fragaria
+		persica
+		oldBlush
+		chinensis
+		gigantea
+		damascena
+		multiflora
+		wichurana
+		laevigata
+		xanthina
+		minutifolia
+		rugosa
+		;
+end;
+begin trees;
+	translate
+		1	fragaria,
+		2	persica,
+		3	oldBlush,
+		4	chinensis,
+		5	gigantea,
+		6	damascena,
+		7	multiflora,
+		8	wichurana,
+		9	laevigata,
+		10	xanthina,
+		11	minutifolia,
+		12	rugosa
+		;
+   [Note: This tree contains information on the topology, 
+          branch lengths (if present), and the probability
+          of the partition indicated by the branch.]
+   tree con_50_majrule = (1:4.410789e-02,9:3.432537e-03,(((3:3.620447e-03,4:3.676250e-03)0.964:3.619047e-03,(5:1.415445e-03,6:1.490495e-03)0.982:3.623100e-03)1.000:8.212922e-03,(7:1.637450e-03,8:1.507546e-03)1.000:5.750296e-03,(11:1.620219e-03,12:1.488413e-03)0.995:3.513472e-03)0.984:3.771488e-03,(2:1.832572e-02,10:1.473888e-03)0.824:3.385431e-03);
+
+   [Note: This tree contains information only on the topology
+          and branch lengths (median of the posterior probability density).]
+   tree con_50_majrule = (1:4.410789e-02,9:3.432537e-03,(((3:3.620447e-03,4:3.676250e-03):3.619047e-03,(5:1.415445e-03,6:1.490495e-03):3.623100e-03):8.212922e-03,(7:1.637450e-03,8:1.507546e-03):5.750296e-03,(11:1.620219e-03,12:1.488413e-03):3.513472e-03):3.771488e-03,(2:1.832572e-02,10:1.473888e-03):3.385431e-03);
+end;
