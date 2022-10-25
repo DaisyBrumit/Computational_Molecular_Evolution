@@ -34,7 +34,13 @@ write.nexus.data(as.DNAbin(loc0114_aln), "loc0114_aln.nex")
 | rates | propinv |
 | statefreqpr | fixed(equal) |
 
+Remaining in step with our class practice, I ran MCMC with 100,000 iterations and showed results at every 100 iterations. (Average standard deviation of split frequencies: 0.007025)
+
 ### Question 2: Do the values in your .pstat file suggest that the MCMC achieved convergence? Why or why not? Please list at least 2 pieces of evidence that suggest your run converged. If you want, you may use values from other files instead of just .pstat. (3 pts)
+
+**.pstat values**
+
+avgESS values are consistently 
 
 ### Question 3: Provide a plot of your rooted consensus tree from MrBayes, with posterior probability values at each node. Make sure your plot is clearly labeled and readable. (2 pts)
 
