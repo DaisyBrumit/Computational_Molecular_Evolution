@@ -34,27 +34,140 @@ write.nexus.data(as.DNAbin(loc0114_aln), "loc0114_aln.nex")
 | rates | propinv |
 | statefreqpr | fixed(equal) |
 
-Remaining in step with our class practice, I ran MCMC with 100,000 iterations and showed results at every 100 iterations. (Average standard deviation of split frequencies: 0.007025)
+Remaining in step with our class practice, I ran MCMC with 500,000 iterations and showed results at every 10 iterations. (Average standard deviation of split frequencies: 0.002287)
 
 ### Question 2: Do the values in your .pstat file suggest that the MCMC achieved convergence? Why or why not? Please list at least 2 pieces of evidence that suggest your run converged. If you want, you may use values from other files instead of just .pstat. (3 pts)
 
 **.pstat values**
 
-avgESS values are consistently 
+avgESS values are consistently over 100 and PSRF values all round to 1.00. Both of these outcomes suggest convergence! 
 
 ### Question 3: Provide a plot of your rooted consensus tree from MrBayes, with posterior probability values at each node. Make sure your plot is clearly labeled and readable. (2 pts)
 
+```{r 0114tree, echo=FALSE, fig.align='center'}
+tree0114 = read.nexus("bayes_out/loc0114_aln.nex.con.tre")
+tree0114_with_lengths = tree0114[[1]] # isolate the majority consensus tree that includes branch lengths
+tree0114_with_lengths$node.label = round(((as.numeric(tree0114_with_lengths$node.label))*100), digits=2) # round neatly to 2 digits
+tree0114_root = root(tree0114_with_lengths, "fragaria", resolve.root=T) # root using wild strawberry as the outgroup
+
+plotTree(tree0114_root, edge.width=2, font=1) # plot the tree
+nodelabels(tree0114_root$node.label, cex=0.8) # add posterior labels
+```
+
 ### Question 4: Provide a plot of your rooted Maximum Clade Credibility tree (support values optional). (1 pt)
+
+```{r 0114tree2, echo=FALSE, fig.align='center'}
+tree0114_MCC = read.nexus("bayes_out/loc0114_aln.nex.run1.t") # read in MCC tree
+maxtree0114 = root(mcc(tree0114_MCC), outgroup=c("fragaria")) # root with wild strawberry
+plot(maxtree0114, main="Maximum Clade Credibility Tree")
+```
 
 ## Part Two: Concatenated and Partitioned Analysis in MrBayes
 
+```{r multi_seq_concat, echo=FALSE}
+### CREATE CONCATENATED ALIGNS ###
+my.files = list.files(path="./Roses", pattern="*.fasta", full.names=TRUE) # generate list of file names in Roses folder
+
+seqs = readDNAStringSet(my.files[1]) # read in first file
+seqs = seqs[order(names(seqs))] # sort sequences alphabetically (will help organizing all locs later)
+
+x = msa(seqs, method="ClustalOmega", order="input") # force order to stay alphabetical. IMPORTANT.
+
+# store the lengths of each alignment to help create a partition file that differentiates genes by length/position
+my.lengths = rep(0, length(my.files)) 
+my.lengths[1] = ncol(x) # note value 1 = 314, all other vals = 0. This will change when we load in all files in the next step
+
+# loop through each additional file and save info generated above
+for (i in 2:length(my.files)) {
+    new = readDNAStringSet(my.files[i])
+    new = new[order(names(new))]
+    y = msa(new, method="Muscle", order="input")
+    my.lengths[i] = ncol(y)
+    temp = paste0(x,y)
+    names(temp) = names(new)
+    x = DNAStringSet(temp)
+}
+concat.aln = DNAMultipleAlignment(x)
+
+# write phylip and nexus files for use elsewhere
+#write.phylip(concat.aln, "RosesConcat.phy")
+write.nexus.data(as.DNAbin(concat.aln), file="RosesConcat.nex")
+```
+
+```{r multi_seq_partition, echo=FALSE}
+### CREATE PARTITION FILES ###
+
+# create a vector of start positions
+my.starts = c(1)
+for (i in 1:(length(my.lengths)-1)) {
+     my.starts[i+1] = my.lengths[i] + my.starts[i]
+}
+
+my.ends = my.starts + (my.lengths-1) # smae but with end positions
+
+my.loci = gsub("\\.fasta", "", basename(file.path("./Roses/",my.files))) # get gene names
+
+info1 = paste(my.starts, my.ends, sep="-")
+info2 = paste(my.loci, info1, sep="=")
+info3 = paste("DNA,", info2, sep=" ")
+info3 = gsub("DNA,", "charset", info3)
+info3 = paste(info3, ";", sep="")
+loc.list = paste(my.loci, collapse=",")
+list.w.length = paste(c(length(my.loci), loc.list), collapse=":")
+info4 = paste(c("partition", "cpGenes", "=", list.w.length), collapse=" ")
+info4 = paste(info4, ";", sep="")
+write.table(c(info3,info4), file="Roses-MrB-part.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
+```
+
 ### Question 5: Once you have set up your model, please paste in the final block of code/settings from your mb_input file, including the partitions as well as the parameter settings. (5 pts)
 
+```{r not_r, eval=FALSE}
+begin mrbayes;
+	set autoclose=yes nowarn=yes;
+	execute RosesConcat.nex;
+	charset loc0114=1-314;
+	charset loc0180=315-663;
+	charset loc0271=664-1135;
+	charset loc0273=1136-1517;
+	charset loc0535=1518-1817;
+	charset loc0692=1818-2122;
+	charset loc0716=2123-2526;
+	charset loc0751=2527-2858;
+	charset loc0778=2859-3237;
+	charset loc0895=3238-3591;
+	charset loc1018=3592-3907;
+	charset loc1571=3908-4317;
+	charset loc1723=4318-4658;
+	charset loc1762=4659-5108;
+	charset loc1851=5109-5502;
+	partition cpGenes = 15:loc0114,loc0180,loc0271,loc0273,loc0535,loc0692,loc0716,loc0751,loc0778,loc0895,loc1018,loc1571,loc1723,loc1762,loc1851;
+	lset nst=2 rates=propinv;
+	unlink revmat=(all) pinvar=(all) statefreq=(all) shape=(all);
+	prset applyto=(all) ratepr=variable;
+	Outgroup fragaria;
+	mcmc ngen=1000000 samplefreq=500 file=roses;
+	sump relburnin=yes burninfrac=0.25;
+	sumt relburnin=yes burninfrac=0.25 conformat=simple;
+end;
+```
+
 ### Question 6: Provide a plot of your consensus tree from the concatenated run of MrBayes with posterior probability values at each node. (2 pts)
+
+```{r concat_tree1, echo=FALSE, fig.align='center'}
+tree = read.nexus("bayes_out/roses.con.tre")
+tree_with_lengths = tree[[1]] # isolate the majority consensus tree that includes branch lengths
+tree_with_lengths$node.label = round(((as.numeric(tree_with_lengths$node.label))*100), digits=2) # round neatly to 2 digits
+tree_root = root(tree_with_lengths, "fragaria", resolve.root=T) # root using wild strawberry as the outgroup
+
+plotTree(tree_root, edge.width=2, font=1) # plot the tree
+nodelabels(tree_root$node.label, cex=0.8) # add posterior labels
+```
 
 ### Question 7: Use treedist() to compare the maximum clade credibility (MCC) tree from your concatenated run with the MCC from just the first locus (0114). How different are the two trees? (1 pt)
 
 ## Part Three: Run a Coalescent Analysis with ASTRAL
+
+
 
 ### Question 8: Provide the plot of your ASTRAL tree with posterior probability values at each node. Make sure the tree is clearly labeled and readable. (5 pts)
 
