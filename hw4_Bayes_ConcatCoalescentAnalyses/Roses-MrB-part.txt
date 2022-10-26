@@ -1,0 +1,16 @@
+charset loc0114=1-314;
+charset loc0180=315-663;
+charset loc0271=664-1135;
+charset loc0273=1136-1517;
+charset loc0535=1518-1817;
+charset loc0692=1818-2122;
+charset loc0716=2123-2526;
+charset loc0751=2527-2858;
+charset loc0778=2859-3237;
+charset loc0895=3238-3591;
+charset loc1018=3592-3907;
+charset loc1571=3908-4317;
+charset loc1723=4318-4658;
+charset loc1762=4659-5108;
+charset loc1851=5109-5502;
+partition cpGenes = 15:loc0114,loc0180,loc0271,loc0273,loc0535,loc0692,loc0716,loc0751,loc0778,loc0895,loc1018,loc1571,loc1723,loc1762,loc1851;
