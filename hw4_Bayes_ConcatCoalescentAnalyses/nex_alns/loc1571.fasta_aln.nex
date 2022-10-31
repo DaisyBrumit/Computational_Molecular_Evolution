@@ -1,0 +1,86 @@
+#NEXUS
+[Data written by write.nexus.data.R, Mon Oct 31 11:21:51 2022]
+BEGIN DATA;
+  DIMENSIONS NTAX=12 NCHAR=410;
+  FORMAT DATATYPE=DNA MISSING=? GAP=- INTERLEAVE=YES;
+  MATRIX
+    fragaria         aggcctctttgctcttcaacttttgaatcgtaacaagccctcttggcggcaaaagttcatcaagcattttgttgcactct
+    gigantea         aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    oldBlush         aggcctctttgctctccaacttctgaatcgaaacaaaccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    damascena        aggcctctttgctctccaacttctgaatcgaaacaaaccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    chinensis        aggcctctttgctctccaacttctgaatcgaaacaaaccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    multiflora       aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    wichurana        aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacacgttgttgcactct
+    persica          aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacactttgttgcactct
+    laevigata        aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaggttcatcaaacacttcgttgcactct
+    minutifolia      aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacactttgttgcactct
+    rugosa           aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacactttgttgcactct
+    xanthina         aggcctctttgctctccaacttctgaatcgaaacaagccctcatggcgccaaaagttcatcaaacactttgttgcactct
+
+    fragaria         ctgcaccgtggggtggcactgtggacgaaatgctcacctttgcttcagggaacacactaggagtcccactagtgaatcca
+    gigantea         cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    oldBlush         cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    damascena        cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    chinensis        cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    multiflora       cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    wichurana        cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccacttgtgaatcca
+    persica          cagcaccatggggtgggactgtagacgaaatgctcacctttgcttcagggaacacactaggagtgccactggtgaatcca
+    laevigata        cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccactggtgaatcca
+    minutifolia      cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccactggtgaatcca
+    rugosa           cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccactggtgaatcca
+    xanthina         cagcaccgtggggtgggactgtggacgaaatgctcacctttgcttcagggaacacactaggagtgccactggtgaatcca
+
+    fragaria         ttgttagtgagagatgagcagagaagctcagaaagcaatctatggctgatgcctaatccgaagctattcaggagcgaaaa
+    gigantea         ttgctcgtaagagaagagcagaggagctcagaaagcaacttatggctaatgcctaatcctagattattcaggagaaaaaa
+    oldBlush         ttgctcgtaagagaagagcagaggagctccgaaagcaacttatggctaatgcctaatcctagattattcaggagaaaaaa
+    damascena        ttgctcgtaagagaagagcagaggagctccgaaagcaacttatggctaatgcctaatcctagattattcaggagaaaaaa
+    chinensis        ttgctcgtaagagaagagcagaggagctccgaaagcaacttatggctaatgcctaatcctagattattcaggagaaaaaa
+    multiflora       ttgctcgtaagagaagagcagaggagctccgaaagcaacttatggctaatgcctaatcctagattattcaggagcaaaaa
+    wichurana        ttgcttgtaagagaagagcagaggagctccgaaagcaacttatggctaatgcctaatcctagattattcaggagcaaaaa
+    persica          ttgctcgtaagagaagagcagaggagctcagaaagcaacttgtggctaatgcctaatcctagattattcaggagcaaaaa
+    laevigata        ttgctcgtaagagaagagcagaggagctcagaaagcaacttatggctaatgcctaatcctagattattcaggagcaaaaa
+    minutifolia      ttgctcgtaagagaagagcagaggagctcagaaagcaacttatggctaatgcctaatcctagattattcaggagcaaaaa
+    rugosa           ttgctcgtaagagaagagcagaggagctcagaaagcaacttatggctaatgcctaatcctagattattcaggagcaaaaa
+    xanthina         ttgctcgtaagagaagagcagaggagctcagaaagcaacttatggctaatgcctaatcctagattattctggagcaaaaa
+
+    fragaria         accaatagtgattaccccaaatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    gigantea         accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    oldBlush         accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    damascena        accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    chinensis        accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    multiflora       accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    wichurana        accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    persica          accaatagtgatcaccccagatgctacatattcagctcataacattccccagttcctcaatgacattggatttcccgaag
+    laevigata        gccaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+    minutifolia      accaatagtgatcaccccagatgctacatattcagctcaaaacattccccaattcctcaatgacattggatttcccgaag
+    rugosa           accaatagtgatcaccccagatgctacatattcagctcaaaacattccccaattcctcaatgacattggatttcccgaag
+    xanthina         accaatagtgatcaccccagatgctacatattcagctcataacattccccaattcctcaatgacattggatttcccgaag
+
+    fragaria         gaattcatcccttcaaaacacgcattttggccatgatggatcagcttgaagctcccggagtgcctatcacgtgtgtgatc
+    gigantea         gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    oldBlush         gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    damascena        gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    chinensis        gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctattacttgtgttatt
+    multiflora       gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggttcctcttacttgtgttatt
+    wichurana        gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    persica          gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    laevigata        gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    minutifolia      gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    rugosa           gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttgaagctcctggggtgcctcttacttgtgttatt
+    xanthina         gaattcatcccttcaaaacgcgcattttggtcttgatggatcagcttcaagctcctggggtgcctcttacttgtgttatt
+
+    fragaria         ggaaccggtg
+    gigantea         gggaccggtg
+    oldBlush         gggaccggtg
+    damascena        gggaccggtg
+    chinensis        gggaccggtg
+    multiflora       gggaccggtg
+    wichurana        gggaccggtg
+    persica          gggaccggtg
+    laevigata        gggaccggtg
+    minutifolia      gggaccggtg
+    rugosa           gggaccggtg
+    xanthina         gggaccggtg
+  ;
+END;
+

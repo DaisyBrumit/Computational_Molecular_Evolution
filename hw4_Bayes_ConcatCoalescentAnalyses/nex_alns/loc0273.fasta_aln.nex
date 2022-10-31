@@ -1,0 +1,73 @@
+#NEXUS
+[Data written by write.nexus.data.R, Mon Oct 31 11:21:46 2022]
+BEGIN DATA;
+  DIMENSIONS NTAX=12 NCHAR=382;
+  FORMAT DATATYPE=DNA MISSING=? GAP=- INTERLEAVE=YES;
+  MATRIX
+    fragaria         tttcggtggatgatccattgaagaacatggagtcatacgacgattactatgatcaagcctcggattctagtactgcaaat
+    xanthina         tttcggttgatgacccattgaagaatatggaatcatacgatgattattatgatcaagcctcgaattccagtactgcaaac
+    laevigata        tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    gigantea         tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagccttgaattccagtactgcaaac
+    persica          tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    minutifolia      tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    rugosa           tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagacctgcaaac
+    multiflora       tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    wichurana        tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    damascena        tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    oldBlush         tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+    chinensis        tttcggttgatgacccattgaagaatatggagtcatatgatgattattatgatcaagcctcgaattccagtactgcaaac
+
+    fragaria         cttccggtctcttcatcaaaagaagcttctccgacagataagagtactgatgcagattgctctaattccatgagaaggtg
+    xanthina         cttccagtctcttcatcaaaagaagctgttccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    laevigata        cttccggtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccgtgagaaggtg
+    gigantea         cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    persica          cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    minutifolia      cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    rugosa           cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    multiflora       cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    wichurana        cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    damascena        cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    oldBlush         cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+    chinensis        cttccagtctcttcatcaaaagaagctgctccaacagaaa---attcttcttcagattgctctaattccttgagaaggtg
+
+    fragaria         cagaagattatcgaaaagaatatttgagaagtacttggattttctcaaacccttgtacaaaaggattagagggggacata
+    xanthina         cagaagattatcgaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagaggaggtcata
+    laevigata        cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagaggaggtcata
+    gigantea         cagaagattatcaaaaagaatatttgagaagtacttggactttctcagaccgttgtacaaaaagattagacaaggtcata
+    persica          cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccattgtacaaaaggattagaggaggtcata
+    minutifolia      cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagaggaggtcata
+    rugosa           cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagacaaggtcata
+    multiflora       cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagacaaggtcata
+    wichurana        cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagacaaggtcata
+    damascena        cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaggattagacaaggtcata
+    oldBlush         cagaagattatcaaaaagaatatttgagaagtacttggactttctcagaccgttgtacaaaaagattagacaaggtcata
+    chinensis        cagaagattatcaaaaagaatatttgagaagtacttggattttctcagaccgttgtacaaaaagattagacaaggtcata
+
+    fragaria         aagcgaaccctaaagcagctgggaatcatgtcgataaaaggttccattcagcaaagaacagcagggtgtattcatcagaa
+    xanthina         aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtatattcatcagaa
+    laevigata        aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagagtgtattcatcagaa
+    gigantea         aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    persica          aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcaaagaacagcagggtgtattcatcagaa
+    minutifolia      aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    rugosa           aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    multiflora       aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    wichurana        aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    damascena        aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+    oldBlush         aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcaaagaacagcagggtgtattcatcagaa
+    chinensis        aagcaaatcctaaagtagctgggaatcatgttgataaaaggttccattcatcgaagaacagcagggtgtattcatcagaa
+
+    fragaria         actgcatctccgcgaataagtgtagcctattctgctcccgatgattggcgaaggtcctgtga
+    xanthina         actgcatcgccgcgaataagcgtagcctattctgcccccgatgattggcgaaggtcctgtga
+    laevigata        actgcatcgccgcgaataagcatagcttattctgcccccgatgattggcgaaggtcctgtga
+    gigantea         actgcatcgccgcgaataagcgtagcctattctgctcccgatgattggcgaaggtcctgtga
+    persica          actgcatcgccgcgaataagcgtagcctattctgcccccgatgattggcgaaggtcctgtga
+    minutifolia      actgcatcgccgcgaataagcgtagcctattctgctcccgatgattggcgaaggtcctgtga
+    rugosa           actgcatcgccgcgaataagcgtagcctattctgctcctgatgattggcgaaggtcctgtga
+    multiflora       actgcatcgccgcgaataagcgtagcctattctgctcctgatgattggcgaaggtcctgtga
+    wichurana        actgcatcgccgcgaataagcgtagcctattctgctcctgatgattggcgaaggtcctgtga
+    damascena        actgcatcgccgcgaataagcgtagcctattctgctcctgatgattggcgaaggtcctgtga
+    oldBlush         actgcatcgccgcgaataagcgtagcctactctgctcctgatgattggcgaaggtcctgtga
+    chinensis        actgcatcgccgcgaataagcgtagcctactctgctcctgatgattggcgaaggtcctgtga
+  ;
+END;
+

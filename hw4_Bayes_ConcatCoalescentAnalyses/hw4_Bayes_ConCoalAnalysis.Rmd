@@ -165,9 +165,40 @@ nodelabels(tree_root$node.label, cex=0.8) # add posterior labels
 
 ### Question 7: Use treedist() to compare the maximum clade credibility (MCC) tree from your concatenated run with the MCC from just the first locus (0114). How different are the two trees? (1 pt)
 
+```{r treedist, echo=FALSE}
+#max tree 
+maxtree = root(mcc(tree), outgroup=c("fragaria")) 
+treedist(maxtree, maxtree0114)
+```
+The symmetric difference between the two trees is 4, so our 2 trees differ in 2 nodes, which is smaller than I anticipated considering how many loci were introduced in our concatenated run.
+
 ## Part Three: Run a Coalescent Analysis with ASTRAL
 
+```{r allGenes, echo=FALSE}
+### generate nex files for each alignment ###
 
+for (i in 2:length(my.files)) {
+  #Read the sequences for the first locus (loc0114) & align w/ Clustal-Omega
+  seqs <- readDNAStringSet(my.files[i])
+  aln <- msa(seqs, method = 'ClustalOmega')
+
+  # write your alignment to a nexus format file that can be read by MrBayes
+  write.nexus.data(as.DNAbin(aln), paste0(my.files[i], "_aln.nex"))
+}
+```
+
+```{r allTrees, echo=FALSE}
+### get MCC trees for each locus ###
+my.trees = list.files(path="bayes_out/", pattern="*run1.t", full.names=TRUE)
+
+for (i in 1:length(my.trees)){
+  label = substr(my.trees[i], 11, 18)
+  tree = read.nexus(my.trees[i])
+  maxtree = root(mcc(tree), outgroup=c("fragaria"))
+  
+  write.nexus(maxtree, file = paste0(label, "mcc.tre"), translate = TRUE)
+}
+```
 
 ### Question 8: Provide the plot of your ASTRAL tree with posterior probability values at each node. Make sure the tree is clearly labeled and readable. (5 pts)
 

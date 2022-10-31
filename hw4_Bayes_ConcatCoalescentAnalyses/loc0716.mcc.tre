@@ -1,0 +1,37 @@
+#NEXUS
+[R-package APE, Mon Oct 31 13:55:47 2022]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 12;
+	TAXLABELS
+		fragaria
+		damascena
+		multiflora
+		wichurana
+		oldBlush
+		chinensis
+		gigantea
+		persica
+		laevigata
+		xanthina
+		minutifolia
+		rugosa
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	fragaria,
+		2	damascena,
+		3	multiflora,
+		4	wichurana,
+		5	oldBlush,
+		6	chinensis,
+		7	gigantea,
+		8	persica,
+		9	laevigata,
+		10	xanthina,
+		11	minutifolia,
+		12	rugosa
+	;
+	TREE * UNTITLED = [&U] (((12:0.005621829,11:0.0004319278)0.760104797904042:0.002776455,(((2:0.002304955,3:0.0007277416)0.341713165736685:0.003303552,4:0.001584743)0.987460250794984:0.006850616,(6:0.002480409,(7:0.000243839,5:0.003165149)0.337453250934981:0.00196904)0.993040139197216:0.004347814)0.538429231415372:0.002059125)0.406731865362693:0.005074734,((10:0.002824637,9:0.006086501)0.283334333313334:0.00118057,8:0.007823327)0.620667586648267:0.005885354,1:0.05218417)1;
+END;
