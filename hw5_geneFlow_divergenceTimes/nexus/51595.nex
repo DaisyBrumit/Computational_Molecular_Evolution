@@ -1,0 +1,179 @@
+#NEXUS
+[Data written by write.nexus.data.R, Thu Nov  3 14:16:51 2022]
+BEGIN DATA;
+  DIMENSIONS NTAX=18 NCHAR=704;
+  FORMAT DATATYPE=DNA MISSING=? GAP=- INTERLEAVE=YES;
+  MATRIX
+    decorus         ------------------------tggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    tarsalis        -----------------ttggtggtggcgagttgagacttgatggcattgacccaaatccggwactatataactttcatc
+    geronimoi       ---------------------tggcggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    icenoglei       tatactgcagccgtacgttggtggtggcgagtagagacttgatggcattgacccaaatccggtactayataactttcatc
+    borealis        ------------------------tggcgagtagagacttgatggcattgacccaaatccggtactatataactttcatc
+    signatus        tataccacagccgtacgttggtggtrgcgagttgagacttgatgrcattgacccamatccggtactatataactttcatc
+    altanus         ------------------------------------------tggcattgmcccaaatccggtactatrtaactttcatc
+    cambridge       tatactgcagccgtacgttggtggtggcgagtwgagacttgatggcattgacccaaatccggtactatataactttcatc
+    Pellenes        ---------------cgttggtggtggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    hirsutus        -------------------------ggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    zapoteca        --------------------------------------------------------------------------------
+    hallani         ----------------gttggtkgtggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    jucundus        tatactgcagccgtacgttggtggtggcgagtagagacttgatggcattgacccaaatccggtactatataactttcatc
+    ophrys          tatacagcagccgtacgttggtggtggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    oregon          --------------------------------------------------------------------------------
+    american        --------------------------gcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    pugillis        tatactgcagccgtacgttggtggtggcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+    conjunctus      tataccgcagccgtacgttggtggtarcgagttgagacttgatggcattgacccaaatccggtactatataactttcatc
+
+    decorus         ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    tarsalis        ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    geronimoi       ttctttatrtttgcaaaggatatyttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttatgataatc
+    icenoglei       ttctttatatttgcaaaggataccttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    borealis        ttctttatrtktgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgatwatc
+    signatus        ttctttatgcttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    altanus         ttctttatgtttgcaaaggmtatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgatartc
+    cambridge       ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    Pellenes        ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    hirsutus        ttctttatatttgcaaaggataccttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    zapoteca        -----------------------cttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    hallani         ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgatartc
+    jucundus        ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    ophrys          ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    oregon          -----------------------------------gttgaaacagcttcagtgtcaaagatgaacaagtttctgatagtc
+    american        ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    pugillis        ttctttatgtttgcaaaggatatcttgccgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+    conjunctus      ttctttatgtttgcaaaggatatcttgycgcttcagttgaaacagcttcagtgtcaaagatgaacaagtttctgataatc
+
+    decorus         tgtttggccgccatcgtgtgtrttgctgctggcaccgcagtctactccagagcacgatatcatggtggtggacataaact
+    tarsalis        tgtttggccgctatagtgtgtgttgctgctggyacagcagtctactccagagcacgatatcatggtggtggacataaact
+    geronimoi       tgtttggctgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcayggtggtggrcataaact
+    icenoglei       tgtttggctgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaact
+    borealis        tgtttggccgccatagtgtgtgttgctgctggcaccgcagtctactccaggkcacgatatcayggtggtggacataaatt
+    signatus        tgtttggctggcatrctgtgcattgctgctggcaccgcagtctactccagggcacgatatcayggtggtggacataaatt
+    altanus         tgtttggccgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaact
+    cambridge       tgtttggccgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtgggcataaact
+    Pellenes        tgtttggctrccatactgtgtgttgctgctggcaccgcagtctactcyagggcacgatatcacggtggtggacataaact
+    hirsutus        tgtttggctgccacactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaact
+    zapoteca        tgtttgrctgccatactgtgtgttgctgctggcaccgcagtctactccagagcacgatatcacggtggtggacataaatt
+    hallani         tgtttggccgccatmstgtgtrttgctgctggcacygcagtctactccagrgcacgatatcayggyggtggacataaact
+    jucundus        tgtttggccgccatagtgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaatt
+    ophrys          tgtttggccgctatagtgtgtgttgctgttggcacagcagtctactccagagcacgatatcatggtggtggacataaact
+    oregon          tgtttggctgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaact
+    american        tgtttggccgctatagtgtgtgttgctgctggcacagcagtctactccagrgcacgatatcatggtggtggacataaact
+    pugillis        tgtttggctgccatactgtgtgttgctgctggcaccgcagtctactccagggcacgatatcacggtggtggacataaact
+    conjunctus      tgtttggctgccatactgtgtgttgctgctggcaccgcagtytactccaggksacgatatcatggtggtggacataaact
+
+    decorus         acayttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccrttgyyc
+    tarsalis        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    geronimoi       acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccattgccc
+    icenoglei       acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    borealis        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    signatus        acacttgggtggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatctcacaggaagcccrttgccc
+    altanus         acayttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    cambridge       acacttgggaggtgctgcttatggtcaccatcaaccaaartacactgctcatggattatcttacaggaagcccgttgctc
+    Pellenes        acatttgggcggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacagraagcccgttgccc
+    hirsutus        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacakgaagcccgttgccc
+    zapoteca        acacttrggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    hallani         acacttgggaggtgcygcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    jucundus        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    ophrys          acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttwcaggaagcccgttgccc
+    oregon          acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaaacccgttgccc
+    american        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    pugillis        acacttgggaggtgctgcttatggttaccatcaaccaaaatacactgctcatggattatcttacaggaagcccgttgccc
+    conjunctus      acayttgggaggtgctgcatatggytaccatcaaccaaaatayactgctcatggattatcttacaggaagcctrttgycc
+
+    decorus         ttcacactcccatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactacatcaarccttcttatggccat
+    tarsalis        ttcacactcccatcgtatacgcacacaaatcttacagcaagccwaaagtgacccactacatcaagccttctcatggccat
+    geronimoi       ttcacactcccatcgtatacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccttcttatggccat
+    icenoglei       ttcacactcccatcgtatacgcacacaaatcttacagcaagccaaaagtgacccactacatcaarccttcttatggccat
+    borealis        ttcacacwcctatcgtctacgcacacaagtcttacagcaagccaaaagtgactcactacatyaagccttcttatggccat
+    signatus        ttcacactccyatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactacatcaaaccttctcatggccat
+    altanus         ttcacactcccatcgtmtacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccttcttatggccat
+    cambridge       ttcacacycccatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactayatcaagccttcttatggccat
+    Pellenes        ttcacactcccatcgtctacgcacataaatcttacagcaagccaaaaatgacacactacatcaaaccctctcayggccat
+    hirsutus        ttcacactcccatcgtctacgcacacaaatcttacagcaagccaaaagtgacacattacatcaaaccctctcatggccat
+    zapoteca        ttcacactcccatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccttcttatggccat
+    hallani         ttcacactcccatcgtatacgcacacaaatcttacagcaagccaaaagtgacccactacatcaarccttcttatggycat
+    jucundus        ttcacactcctatcgtctacgcacacaagtcttacagcaagccaaaagtgactcactacatcaagccttcttatggccat
+    ophrys          ttcacactcccatcgtatacgcacacaaatcttacagcaagccaaaagtgacacactacatcaaaccttctcatggccat
+    oregon          ttcacactcccatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccttcttatggccat
+    american        ttcacactcccatcgtatacgcacacaaatcttacagcaagccaaaagtgacacactacatcaaaccttctcatggccat
+    pugillis        ttcacactcctatcgtatacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccttcttatggccat
+    conjunctus      ttcacactcccatcgtctacgcacacaaatcttacagcaagccaaaagtgacccactacatcaagccctcttatggccat
+
+    decorus         gagttgcaccatgccccagtgtacagaagcaagcccgtctaytaccttggyggtcatrctggccacggcggagtcgtcta
+    tarsalis        gagttgcaccatgccccagtgtacagragcaagcccgtctactaccttggcggtcatgctggccacggcggagtcgtcta
+    geronimoi       gaggtgcaycatgccccagtgtacagaagcaagcccgtctactaccttggcggtcatgctggccacgggggagtcgtcta
+    icenoglei       gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggacatgctggtcayggcggagtcgtcta
+    borealis        gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcattctggccatggtggagtcgtcta
+    signatus        gagttgcaccatgccccagtgtacagaagcaagcccgtctactacctcggcggycatgctggccacggcggagtcgtsta
+    altanus         gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcatgctggccacggcggagtcgtcta
+    cambridge       gagttgcaycatgccccagtgtacagaagcaagcccgtstactacctyggcggacatgctggccacggcggagtwgtcta
+    Pellenes        garttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcatgctggccacggcggagtcgtcta
+    hirsutus        gagttgcatcatgccccagtgtacagaagcaagcccgtctactacctcggcggtcatgctggccatggcggagtcgtcta
+    zapoteca        gagtaccaccatgccccagtatacagaagcaagcccgtctaytayctyggcggtcatkctggccacggcggagtcgtcta
+    hallani         gagttgcaccatgccccagtgtayagaagcaagcccgtctactaccttggcggtcattctggycacggcggagtcgtcta
+    jucundus        gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcacgctggtcacggcggagtcgtcta
+    ophrys          gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcatgctggccacggcggagtcgtcta
+    oregon          gagttgcaccatgccccagtgtacagaagcaagcccgtctactatcttggcggtcattctggccacggcggagtcgtcta
+    american        gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcatgctggccacggcggagtcgtcta
+    pugillis        gagttgcaccatgccccagtgtacagaagcaagcccgtctactaccttggcggtcattctggccacggcggagtcgtcta
+    conjunctus      gagttgcaccatgccccggtctacagaagcaagcccgtctactacctyggcggccayrctrgccacggyggagtcgcmta
+
+    decorus         caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggwgaaaartagagaatt
+    tarsalis        caagccagccgttcattcagtccatcacgcaccygcatacgttcataaaagtcaytattartrgagaaaagtagagaatt
+    geronimoi       caagccagccgttcactcagttcatcacgcacctgcatacgtycataaaagtcattattaawgragaaaattagagaatt
+    icenoglei       caagccagccgttcattcagtycatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+    borealis        caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagttgaaaatt
+    signatus        caagccagccgttcattcagthcaccacgcaccagcatacgttcataaaagtcattattaatggagaarartagagaatt
+    altanus         caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+    cambridge       caagccagccgttcattcmgtycatcacgcacctgcatacgttcataaaagtcattattaatkgagaaaagtaragaatt
+    Pellenes        caagccagccgttcattcagttcatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+    hirsutus        caagccagccgttcattcagtccatcacgcaccwgcatacgttcataaaagtcattattaatggagaaaagtagagaagt
+    zapoteca        caagccagccgttcattcagtccaycaygcacctgcmtacgttcataaaagtcattattaatggagaaaagwagagaatt
+    hallani         caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatgragaaaagtagagaatt
+    jucundus        caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+    ophrys          caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcactattaatggagaaaagtagagaatt
+    oregon          caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+    american        caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcactattaatggagaaaagtagagaatt
+    pugillis        caagccagccgttcattcagtccatcacgcacctgcatacgttcataaaagtcattattaatggagaaaaatagagaatt
+    conjunctus      caagtcaggcgttcattcagttcatcacgcacctgcatacgttcataaaagtcattattaatggagaaaagtagagaatt
+
+    decorus         tatcatctgcgcatgtycaktcggcagagctgatcaaggtctccggtcaagtcckaaagaattaaattctttgrcatcta
+    tarsalis        tatcatctgcgcatgtccagtcggcagagctgatcaaggtytccggtcragtcctaaagaattraattctttggcatcta
+    geronimoi       tatcatctgcgcatgtccagtcggcagagctgatcaaggtytccggtcaagtcctaaagaattaaattctttggcatcta
+    icenoglei       tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccggtcaagkcctaaagaatyaaattctttggcatcta
+    borealis        tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    signatus        tatcatctgcgyatgtccagtcgrcagagctgatcaaggttyccggtcaagtcctaaagaatt-aattctttggcatcta
+    altanus         tatcatctgcgcatgtccagtcggcagarctgatcaagrtctccggtcaagtcctaaagaattaaattctttggcatcta
+    cambridge       tatcatctgcgcatatccagtcggcagagctgatcgaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    Pellenes        tatcatytgcacatgtccagtcggcagagctgatcaaggtcttcggtcaagtcctaaagaatt-cattctttgtcaacta
+    hirsutus        tatcatctgcrcatgtccagtcggcggagctgatcccggtc-ccggtcaagtcctaaagaatt-aattctttggcatcta
+    zapoteca        tatcatctgcgcatatccastcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    hallani         tatcatctgcgyatgtccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    jucundus        tatcatctgcgcatatccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    ophrys          tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    oregon          tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    american        tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccggtcamgtcctaaagaattaaattctttggcatcta
+    pugillis        tatcatctgcgcatatccagtcggcagagctgatcaaggtctccggtcaagtcctaaagaattaaattctttggcatcta
+    conjunctus      tatcatctgcgcatgtccagtcggcagagctgatcaaggtctccgatcaagtcctaaagaattaaattctttggcatcta
+
+    decorus         cctgcagcactgtattgtaacattccaaaaaaatatcttttttaaataaaatatttaagtyccc
+    tarsalis        cctrcagcactgtattgtaacattccaaaaaaataycttttttaaataaaatatttaagtcccc
+    geronimoi       cctrcagcactgtattgtaacattccaaaaaaataccttttttaaataaaatatttaagtmccc
+    icenoglei       cctgcagcactgtattgtaacattccaaaaaaataycttttttaaataaaatatttaagtcccc
+    borealis        cctgcagcactgtattgtaacattccaaaaaaataccttttttaaataaaatatttaagtcccc
+    signatus        cctgcagcactgtattgtaacattccwaaaaaatatcttttttaaataaaatatttaartcycc
+    altanus         cctgcagcactgtattgtaacattccaaaaaaataccttttttaaataaaatatttaagtcccc
+    cambridge       cctgcagcactgtattgtaacattccaaaaaaataccttttttaaataaaatattkaagtcccc
+    Pellenes        cctgcagcactgcattgtaacatttcaaaaaaawaccttttttaaataaartatttaagtcccc
+    hirsutus        cctgcagcactgtattgtaacattccaaaaaaata-cttttttaaataaaatatttaagwcccc
+    zapoteca        cctkcagcactgtattgtaacattccaaaaaaatatctwttttaaataaaatatttaagtcccc
+    hallani         cctgcagcactgtattgtaacattccaaaaaaataycttttttaaataaaatatttaagtcccc
+    jucundus        cctgyagcactgtattgtaacattccaaaaaagtaccttttttaaataaaatatttaagtcccc
+    ophrys          cctgcagcactgtattgtaacattccaaaaaaatatcttttttaaataaaatatttaagtcccc
+    oregon          cctgcagcactgtattgtaacattccaaaaaaatatcttttttaaataaaatatttaagtcccc
+    american        cctgcagcactgtattgtaacattccaaaaaaatatcttttttaaataaaatatttawgtcccc
+    pugillis        cctgcagcactgtattgtaacattccaaaaaaataccttttttaaataaaatatttaaatcccc
+    conjunctus      cctgcagcactgtattgtaacattccaaaaaaaaaccttttttaaataaaatatttaagtcmmc
+  ;
+END;
+
