@@ -1,0 +1,14 @@
+#NEXUS 
+
+Begin trees;  [Treefile saved Mon Nov 14 15:00:52 2022]
+[!
+>Data file = spider-snps.nex
+]
+	Translate
+		1 americanus,
+		2 ophrys,
+		3 tarsalis,
+		4 signatus
+		;
+tree 'PAUP_1' = [&U] ((1:2194,(2:1646,3:2254):678):17487,4:17176);
+End;
