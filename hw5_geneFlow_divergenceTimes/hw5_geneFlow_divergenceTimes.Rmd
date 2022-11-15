@@ -95,7 +95,7 @@ write.table(c(info3,info4), file="Spiders-MrB-part.txt", quote=FALSE, row.names=
 
 ```
 
-## Question 1: Provide the plot of your ASTRAL tree with posterior probability values at each node. Make sure the tree is clearly labeled and readable. (5 pts)
+### Question 1: Provide the plot of your ASTRAL tree with posterior probability values at each node. Make sure the tree is clearly labeled and readable. (5 pts)
 
 ```{r astral tree, echo=FALSE, fig.align='center'}
 # plot
@@ -172,10 +172,50 @@ SD D Stat = 0.033
 P(D = 0) = 2.22e-16
 
 This p-value is miniscule, so we reject the null that D = 0, and operate under the assumption of a positive D value. Positive D stats suggest more ABBA sites and the presence of gene flow between either signatus or americanus with tarsalis.
-```{r title, echo=FALSE}
+
+### Question 6: Copy and paste the lines of code you used to specify your substitution model, the linking/unlinking of partitions, and the rate prior.  Please do NOT copy and paste all of your partition information (i.e. all of the charset lines)! (1 pt)
+
+```{mrbayes model params, eval=FALSE}
+begin mrbayes;
+    set autoclose=yes nowarn=yes;
+    execute SpidersConcat.nex;
+    charset loc51068=1-412;
+    ...
+    partition byLocus = ...
+    lset nst=6 rates=propinv;
+    prset applyto=(all) ratepr=variable;
+    ...
+    unlink statefreq=(all) revmat=(all) shape=(all);
+    ...
 ```
 
-```{r title, echo=FALSE}
+### Question 7: Copy and paste the lines of code you used to set up all of the node dating constraints, calibrations, and priors. (5 pts)
+```{mrbayes constraints, eval=FALSE}
+    ...
+    constraint Hb = 1-6 8-18;
+    constraint clade1 = 17 6 12;
+    constraint clade2 = 6 12;
+    constraint clade3 = 1-4 8-11 13-16 18;
+    constraint clade4 = 11 16 1 18 10 14 2 9;
+    constraint clade5 = 16 1;
+    constraint clade6 = 13 15 4;
+    
+    calibrate clade1 = truncatednormal(2100,4800,1400);
+    calibrate clade2 = truncatednormal(500,3250,1300);
+    calibrate clade4 = truncatednormal(1700, 2700, 500);
+    calibrate clade5 = truncatednormal(1000, 1500, 250);
+    
+    prset topologypr = constraint(Hb, clade1, clade2, clade3, clade4, clade5, clade6);
+    prset treeagepr = truncatednormal(2500,5000,1200);
+    prset brlenspr = clock:uniform;
+    prset clockratepr = lognorm(-5.5,0.5);
+    prset clockvarpr = igr;
+    
+    outgroup Pellenes;
+    mcmc ngen=10000000 samplefreq=100 printfreq=1000 file=spiders_concat;
+    sump relburnin=yes burninfrac=0.25;
+    sumt relburnin=yes burninfrac=0.25;
+end;
 ```
 
 ```{r title, echo=FALSE}
