@@ -1,0 +1,191 @@
+---
+title: "hw6_EvolutionaryRates"
+author: "Daisy Fry-Brumit"
+date: "2022-11-29"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(msa)
+library(phangorn)
+library(phytools)
+library(pegas)
+library(dplyr)
+library(MCMCtreeR)
+```
+
+```{r alignments, include=FALSE}
+### Get the alignment with muscle for every file
+my.files = list.files(path="./raw-fastas", pattern="*.fasta", full.names=TRUE)
+my.alns = vector("list", length(my.files))
+
+for (i in 1:length(my.files)) {
+  x = readDNAStringSet(my.files[i])
+  my.alns[[i]] = msa(x, method="Muscle", order="input")
+}
+```
+
+```{r test clock assumption, include=FALSE}
+# 'Next, we will use Tajima's Relative Rates test to determine which of our loci violate the assumption of clock-like evolution.' using pegas
+
+#Now, we will loop through all of our alignments to perform the test. The relative rates test looks at a pair of taxa compared to an outgroup and returns a p-value if the taxa violate the clock assumption. Since there are many pairs of taxa in our data, we'll use a function that automatically tests all of them, and then returns the counts of the number of pairs that significantly differ from the clock-rate:
+
+num.nonclock = rep(0, length(my.alns))
+
+for (i in 1:length(my.alns)) {
+  temp = my.alns[[i]]
+  dna = as.DNAbin(temp)
+  outindex = grep("Struthio", labels(dna))
+  outgroup = dna[outindex,]
+  FUN <- function(x)
+    rr.test(dna[x[1], ], dna[x[2], ], outgroup)$Pval
+  n = nrow(dna)
+  cc = combn(2:n, 2)
+  OUT <- apply(cc, 2, FUN)
+  num.nonclock[i] = length(which(OUT<(0.05/(length(cc)))))
+}
+
+# figure out which alignments had 0 comparisons that violated the relative rates test
+# subset alignments which pass the test
+
+clock.like = which(num.nonclock==0)
+clock.like.aln = my.alns[clock.like]
+```
+
+### Question 1: Out of the 70 loci that we started with, did all of them show clock-like evolution? If not, then how many loci did "pass" the relative rates test? (2 pts)
+
+Not all loci passed our test, but 17 did.
+
+```{r determine substitution model, include = FALSE}
+# fit each locus
+
+# set up an empty vector to save the best fit model for each alignment 
+my.sub.models = rep(NA, length(clock.like.aln))
+
+# loop through the clock-like alignments and perform the modelTest on each
+for (i in 1:length(clock.like.aln)) {
+  temp = clock.like.aln[[i]]
+  phang = msaConvert(temp, type="phangorn::phyDat")
+  mt = modelTest(phang)
+  my.sub.models[i] = mt[which(mt$BIC == min(mt$BIC)),1]
+}
+```
+
+### Question 2: In the original study where I pulled these loci, they used the HKY + I model for all of their partitions. Based on the model test results...
+
+```{r test_output, echo=FALSE}
+table(my.sub.models, clock.like)
+```
+
+#### Is the HKY + I model the best fit for the majority of the loci? 
+
+No.
+
+#### How many loci do fit this model of substitution?
+
+3 fit this HKY + I
+
+#### How many total different models are there for these loci? (hint: you might find the table() function in R to be useful for this.) (3 pts)
+
+There are 10 different models that fit within this collection of loci
+
+```{r clock analysis setup, include=FALSE}
+x = clock.like.aln[[1]]
+my.lengths = rep(0, length(clock.like.aln))
+my.lengths[1] = ncol(x)
+for (i in 2:length(clock.like.aln)) {
+  y = clock.like.aln[[i]]
+  my.lengths[i] = ncol(y)
+  temp = paste0(x,y)
+  names(temp) = rownames(y)
+  x = DNAStringSet(temp)
+}
+concat.aln = DNAMultipleAlignment(x)
+write.nexus.data(as.DNAbin(concat.aln), file="TurkeysConcat.nex")
+
+### Create the partition file (for RAxML, but don't print)
+my.starts = c(1)
+for (i in 1:(length(my.lengths)-1)) {
+  my.starts[i+1] = my.lengths[i] + my.starts[i]
+}
+my.ends = my.starts + (my.lengths-1)
+
+my.loci = gsub("\\.fasta", "", basename(file.path(my.files[clock.like])))
+info1 = paste(my.starts, my.ends, sep="-")
+info2 = paste(my.loci, info1, sep="=")
+info3 = paste("DNA,", info2, sep=" ")
+
+### Create the partition file for MrBayes
+info3 = gsub("DNA,", "charset", info3)
+info3 = paste(info3, ";", sep="")
+loc.list = paste(my.loci, collapse=",")
+list.w.length = paste(c(length(my.loci), loc.list), collapse=":")
+info4 = paste(c("partition", "byLocus", "=", list.w.length), collapse=" ")
+info4 = paste(info4, ";", sep="")
+write.table(c(info3,info4), file="Turkeys-MrB-part.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
+
+# Upload your concatenated nexus file and your partitions file to the cluster to run MrBayes. Create an mb_input file, and add your charset lines, your partition command, and your set partition command to the file.
+```
+
+### Question 3: Show the plot of your molecular clock tree with divergence times. (5 pts)
+
+```{r consensus tree plot, echo=FALSE, fig.align='center'}
+tree.mb = 'turkeys_concat2.con.tre'
+MCMC.tree.plot(analysis.type = 'mrbayes',
+               directory.files = tree.mb,
+               plot.type = "phylogram",
+               lwd.bar = 3,
+               time.correction = 100,
+               scale.res = c("Epoch", "Age"),
+               node.method = 'bar',
+               col.age = 'navy',
+               no.margin=TRUE)
+```
+
+### Question 4: According to your results, what is the closest relative of the Wild Turkey (at least among these species)? Approximately when did the turkey diverge from this relative? (2 pts)
+
+The closest relative seems to be the Golden pheasant ("Chrysolop" on the tree) and they diverged roughly 14 mya.
+
+```{r waiting times neutral, include=FALSE}
+#use a goodness-of-fit test built into the phangorn package to see if the waiting times between speciation events matches the expected neutral distribution (i.e. this is like the gamma-test):
+
+mb = read.nexus(tree.mb)
+bt = branching.times(mb)
+bt = sort(bt)
+diversi.gof(bt)
+```
+### Question 5: Based on the test results, do the diversification rates appear constant over time, or is there evidence for a shift in rates? (1 pt)
+
+The null model here is exponential, and the p values are significant, so I would anticipate a shift in rates over time
+
+```{r diverging rates expanded, include=FALSE}
+#To get a more detailed result, let's use the MEDUSA step-wise test, to see how many shifts in rate would best explain our data, and to figure out where on our tree these shifts occur. To use MEDUSA, you will need a new package called 'geiger':
+library(geiger)
+
+n.taxa = c(5,7,4,5,8,4,1,1,2,12,3,1,9,16,3,4,5,4,3,2,24,6,2,2,1,2,2,5,7,2,2,5)
+richness = data.frame(taxon=mb$tip.label, n.taxa=n.taxa)
+
+medusa.res = medusa(mb, richness=richness, warnings=FALSE)
+```
+
+### Question 6: According to this analysis, how many rate shifts were there in the history of these species? (1 pt)
+
+There appear to have been 2 shifts
+
+### Question 7: Show your MEDUSA plot with rate shifts. (5 pts)
+
+```{r medusa plot, echo=FALSE, fig.align='center'}
+plot(medusa.res, label.offset=0.5, edge.width=2)
+```
+
+### Question 8: Which clade appears to be evolving the fastest? (1 pt)
+
+I think the Coturnix/Pternisti clade shown in red looks like it's evolving the fastest
+
+### Question 9: Based on these results, do you think the hypothesis about sexual dimorphism driving faster evolution is supported? Why or why not? (5 pts)
+
+I think there's *some* evidence of this. While there are only two detectable shifts based on this analysis, the branch lengths on our overall tree trend shorter as we advance through history, and some of the clades (the Chrysolop/Lerwa clade, for example) show some pretty recent divergence times. I don't know how compelling this argument is compared to other, less sexually dimorphic birds, but this looks more to me like the figures we've seen in class with increased rates of evolution, if only slightly.

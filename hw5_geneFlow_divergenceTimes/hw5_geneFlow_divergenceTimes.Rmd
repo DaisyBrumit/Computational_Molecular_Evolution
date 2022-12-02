@@ -200,13 +200,13 @@ begin mrbayes;
     constraint clade5 = 16 1;
     constraint clade6 = 13 15 4;
     
-    calibrate clade1 = truncatednormal(2100,4800,1400);
-    calibrate clade2 = truncatednormal(500,3250,1300);
-    calibrate clade4 = truncatednormal(1700, 2700, 500);
-    calibrate clade5 = truncatednormal(1000, 1500, 250);
+    calibrate clade1 = truncatednormal(2.100,4.800,1.400);
+    calibrate clade2 = truncatednormal(.500,3.250,1.300);
+    calibrate clade4 = truncatednormal(1.700, 2.700, .500);
+    calibrate clade5 = truncatednormal(1.000, 1.500, .250);
     
     prset topologypr = constraint(Hb, clade1, clade2, clade3, clade4, clade5, clade6);
-    prset treeagepr = truncatednormal(2500,5000,1200);
+    prset treeagepr = truncatednormal(2.500,5.000,1.200);
     prset brlenspr = clock:uniform;
     prset clockratepr = lognorm(-5.5,0.5);
     prset clockvarpr = igr;
@@ -218,11 +218,23 @@ begin mrbayes;
 end;
 ```
 
-```{r title, echo=FALSE}
+### Question 8: Provide your plot of the Habronattus phylogeny with divergence time estimates. (4 pts)
+
+```{r divergence tree, echo=FALSE, fig.align='center'}
+tree.mb = 'spiders_concat.con.tre'
+MCMC.tree.plot(analysis.type='mrbayes',
+               directory.files=tree.mb,
+               plot.type="phylogram", lwd.bar=3,
+               time.correction=100,
+               scale.res=c("Epoch","Age"),
+               node.method='bar',
+               col.age='navy',
+               no.margin=TRUE)
 ```
 
-```{r title, echo=FALSE}
-```
+### Question 9: For the species that appear to be undergoing gene flow (based on your results from the ABBA/BABA test), how long ago did they diverge? (Since you may have large error bars on your time estimates, just use your best guess at the mean age). (1 pt)
+
+between americanus and tarsalis I'd estimate the time of divergence around 2.6 mya.
 
 
 
