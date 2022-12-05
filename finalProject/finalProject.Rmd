@@ -20,9 +20,17 @@ library(phytools)
   I collected whole mitochondrial genome access numbers for GenBank **citation** from Miya et. al and although there is some debate regarding the relationships among Lophiiformes and other ray-finned fishes, I used this same paper as a reference when assessing the performance of my tree building models. Whole genome access numbers were not all in use when I collected them from the paper, and I wanted to use individual loci within the genome, so I used the whole mitogenome access numbers as a jumping off point to narrow down the species I wanted to work with. Gene reference numbers for each locus and species can be found in **supplement1**.
   
   To quantify depth tolerance for each species, I consulted FishBase, an internationally maintained fish database hosted by Q-quatics **citation**. For each species, FishBase provides a range of depths individuals are found. Because I intended to consider depth tolerance, I selected the maximum known depth per species (**table1**).
+  
+Alignments were performed using MUSCLE in accordance with methods approached by Banon et. al in their paper on the efficacy of DNA barcoding in Lophiiformes **citation** 
 
 ### Results
+
+## evolutionary rates
+all 13 loci failed the clockwise assumption
 
 ### Discussion
 
 ### References
+Banon et. al
+https://onlinelibrary.wiley.com/doi/full/10.1111/jzs.12281
+
