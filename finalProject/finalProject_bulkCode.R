@@ -40,31 +40,8 @@ my.alns = vector("list", length(my.files))
 for (i in 1:length(my.files)) {
   x = readDNAStringSet(my.files[i])
   my.alns[[i]] = msa(x, method="Muscle", order="input") # perform alignment
-<<<<<<< HEAD
-  tmp_aln_for_fasta = msaConvert(my.alns[[i]], "bios2mds::align") # convert to format 
-  export.fasta(tmp_aln_for_fasta, outfile=paste0(loci.list[i], "_muscle_aln.fa")) # convert to fasta file
-}
-
-# determine which loci are violating clockwise assumptions
-num.nonclock = rep(0, length(my.alns))
-
-for (i in 1:length(my.alns)) {
-  temp = my.alns[[i]]
-  dna = as.DNAbin(temp)
-  outindex = grep("japonica", labels(dna))
-  outgroup = dna[outindex,]
-  FUN <- function(x)
-    rr.test(dna[x[1], ], dna[x[2], ], outgroup)$Pval
-  n = nrow(dna)
-  cc = combn(2:n, 2)
-  OUT <- apply(cc, 2, FUN)
-  num.nonclock[i] = length(which(OUT<(0.05/(length(cc)))))
-}
-# which loci have 0 clock-wise violations
-clock.like = which(num.nonclock==0) # none!
-clock.like.aln = my.alns[clock.like]
-
-=======
+  
+  # did export fasta for all msa methods. No longer needed. 
   #tmp_aln_for_fasta = msaConvert(my.alns[[i]], "bios2mds::align") # convert to format 
   #export.fasta(tmp_aln_for_fasta, outfile=paste0(loci.list[i], "_muscle_aln.fa")) # convert to fasta file
 }
@@ -115,7 +92,9 @@ for (i in 2:length(my.alns)) {
   x = DNAStringSet(temp)
 }
 concat.aln = DNAMultipleAlignment(x)
-write.nexus.data(as.DNAbin(concat.aln), file="FishConcat.nex")
+
+write.nexus.data(as.DNAbin(concat.aln), file="FishConcat.nex") # mr bayes
+write.phylip(concat.aln, "FishConcat.phy")
 
 # get partition file (for RAxML)
 my.starts = c(1)
@@ -127,6 +106,7 @@ my.ends = my.starts + (my.lengths-1)
 info1 = paste(my.starts, my.ends, sep="-")
 info2 = paste(loci.list, info1, sep="=")
 info3 = paste("DNA,", info2, sep=" ")
+write.table(info3, file="Fish-Raxml-part.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 ### Create the partition file for MrBayes
 info3 = gsub("DNA,", "charset", info3)
@@ -136,4 +116,5 @@ list.w.length = paste(c(length(loci.list), loc.list), collapse=":")
 info4 = paste(c("partition", "byLocus", "=", list.w.length), collapse=" ")
 info4 = paste(info4, ";", sep="")
 write.table(c(info3,info4), file="Fish-MrB-part.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
->>>>>>> ecc829586540db04b459c425a23a10858f74d235
+
+###### Part 4: Consensus trees ######
