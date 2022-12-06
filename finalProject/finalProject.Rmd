@@ -23,6 +23,8 @@ library(phytools)
   
 Alignments were performed using MUSCLE in accordance with methods approached by Banon et. al in their paper on the efficacy of DNA barcoding in Lophiiformes **citation** 
 
+Tree build were performed with both maximum likelihood (ML) and Bayesian methods using RAxML and MrBayes, respectively **citation** **citation**. Although the literature set a precedent for using ML was well as Bayesian methods, it should be noted that none of the nucleotide substitution model options offered by RAxML actually match best-fit models suggested by modelTest in R (**table2**). Models TIM1, TIM2, TIME3, TPM3u, and TrN were substituted for the GTR model in MrBayes following their parameter information **citation** and precedent set by Lecocq et. al **citation**
+
 ### Results
 
 ## evolutionary rates
@@ -34,3 +36,7 @@ all 13 loci failed the clockwise assumption
 Banon et. al
 https://onlinelibrary.wiley.com/doi/full/10.1111/jzs.12281
 
+parameter convention (https://evomics.org/resources/substitution-models/nucleotide-substitution-models/)
+
+Lecocq et. al
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0065642
