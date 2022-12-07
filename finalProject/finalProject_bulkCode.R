@@ -125,4 +125,12 @@ my.boot = read.tree('treeBuilds_raxml/RAxML_bootstrap.fishCon')
 plotBS(tree=my.tree, BStrees=my.boot, cex=0.75, type="phylogram", p=0, bs.col="blue") ## doesn't look quite the way I want it to
 
 ## Bayesian
+bayesTree = read.nexus("treeBuilds_mrBayes/FishConcat.nex.con.tre")
+bayesTree1 = bayesTree[[1]] # contains branch length info
+bayesTree2 = bayesTree[[2]] # only contains topology
 
+bayesTree1$node.label = round(((as.numeric(bayesTree1$node.label))*100), digits=2)
+bayesTree1 = root(bayesTree1, "japonica", resolve.root=T)
+
+plotTree(bayesTree1, edge.width=2, font=1)
+nodelabels(bayesTree2$node.label, cex=0.8)
