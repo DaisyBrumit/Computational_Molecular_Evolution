@@ -118,3 +118,11 @@ info4 = paste(info4, ";", sep="")
 write.table(c(info3,info4), file="Fish-MrB-part.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 ###### Part 4: Consensus trees ######
+#start with ML output and check phylogeny
+my.tree = read.tree('treeBuilds_raxml/RAxML_bestTree.fishCon')
+my.boot = read.tree('treeBuilds_raxml/RAxML_bootstrap.fishCon')
+
+plotBS(tree=my.tree, BStrees=my.boot, cex=0.75, type="phylogram", p=0, bs.col="blue") ## doesn't look quite the way I want it to
+
+## Bayesian
+
