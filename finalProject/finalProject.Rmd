@@ -31,7 +31,7 @@ Tree build were performed with both maximum likelihood (ML) and Bayesian methods
 all 13 loci failed the clockwise assumption
 
 ## tree builds
-
+ML tree produced higher bootstrap values but both trees caputre general phylogeny trends suggested by Hart et. al **citation**. This phylogenetic build differs slightly from that presented by Miya et. al, 
 
 ### Discussion
 
@@ -43,3 +43,5 @@ parameter convention (https://evomics.org/resources/substitution-models/nucleoti
 
 Lecocq et. al
 https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0065642
+
+Hart et. al https://www.sciencedirect.com/science/article/pii/S1055790322000720
