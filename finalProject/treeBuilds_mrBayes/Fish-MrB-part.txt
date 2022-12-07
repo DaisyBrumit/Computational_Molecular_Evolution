@@ -1,0 +1,14 @@
+charset atp6=1-710;
+charset atp8=711-879;
+charset cox1=880-2451;
+charset cox2=2452-3142;
+charset cox3=3143-3933;
+charset cytb=3934-5087;
+charset nd1=5088-6064;
+charset nd2=6065-7111;
+charset nd3=7112-7463;
+charset nd4=7464-8844;
+charset nd4L=8845-9141;
+charset nd5=9142-10993;
+charset nd6=10994-11581;
+partition byLocus = 13:atp6,atp8,cox1,cox2,cox3,cytb,nd1,nd2,nd3,nd4,nd4L,nd5,nd6;

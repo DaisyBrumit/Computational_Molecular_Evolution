@@ -1,0 +1,18 @@
+#SBATCH --time=12:00:00
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=2
+#SBATCH --mem=32GB
+#SBATCH --partition=Centaurus
+
+module load raxml
+
+raxmlHPC -s FishConcat.phy \ ## read in file
+        -n fishCon \ ## file titles for output
+        -f a \ ## rapid bootstrap
+        -q Fish-Raxml-part.txt \ ## speccify partitions file
+        -M \ ## estimate branch lengths separately by partition
+        -m GTRGAMMA \ ## use GTRGAMMA nuc sub model
+        -N 1000 \ ## run 1000 bootstrap replicates
+        -o japonica \ ## specify outgroup
+        -p 1234 -x 1234 \ ## set random number seeds for bootstrap and tree search
+        >fish_raxml_log.txt ## log output file

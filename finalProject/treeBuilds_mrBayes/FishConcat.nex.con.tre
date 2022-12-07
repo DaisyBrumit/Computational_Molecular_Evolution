@@ -1,0 +1,49 @@
+#NEXUS
+[ID: 3118657717]
+begin taxa;
+	dimensions ntax=15;
+	taxlabels
+		japonica
+		americanus
+		macrothrix
+		mollis
+		ocellatum
+		setigerus
+		thompsoni
+		pictus
+		vanhoeffeni
+		brevicaudata
+		jordani
+		pelagica
+		caulinaris
+		spinifer
+		murrayi
+		;
+end;
+begin trees;
+	translate
+		1	japonica,
+		2	americanus,
+		3	macrothrix,
+		4	mollis,
+		5	ocellatum,
+		6	setigerus,
+		7	thompsoni,
+		8	pictus,
+		9	vanhoeffeni,
+		10	brevicaudata,
+		11	jordani,
+		12	pelagica,
+		13	caulinaris,
+		14	spinifer,
+		15	murrayi
+		;
+   [Note: This tree contains information on the topology, 
+          branch lengths (if present), and the probability
+          of the partition indicated by the branch.]
+   tree con_50_majrule = (1:4.066443e-01,((2:1.940594e-01,6:5.656639e-01)0.980:4.104737e-02,13:3.998035e-01)1.000:1.047959e-01,((((((3:1.587743e-01,9:1.429829e-01)1.000:1.526474e-01,(11:3.911447e-02,12:3.768071e-02)1.000:3.365213e-01)0.554:2.558552e-02,((7:1.281194e-01,15:1.401299e-01)1.000:3.141507e-02,14:2.701083e-01)1.000:1.911725e-02)0.905:2.586343e-02,4:5.471935e-01)1.000:4.107966e-02,8:2.608712e-01)1.000:5.949512e-02,(5:1.696998e+00,10:4.803362e-01)0.995:1.344179e-01)0.995:5.289348e-02);
+
+   [Note: This tree contains information only on the topology
+          and branch lengths (median of the posterior probability density).]
+   tree con_50_majrule = (1:4.066443e-01,((2:1.940594e-01,6:5.656639e-01):4.104737e-02,13:3.998035e-01):1.047959e-01,((((((3:1.587743e-01,9:1.429829e-01):1.526474e-01,(11:3.911447e-02,12:3.768071e-02):3.365213e-01):2.558552e-02,((7:1.281194e-01,15:1.401299e-01):3.141507e-02,14:2.701083e-01):1.911725e-02):2.586343e-02,4:5.471935e-01):4.107966e-02,8:2.608712e-01):5.949512e-02,(5:1.696998e+00,10:4.803362e-01):1.344179e-01):5.289348e-02);
+end;
