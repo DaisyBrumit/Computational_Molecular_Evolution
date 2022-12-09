@@ -134,3 +134,67 @@ bayesTree1 = root(bayesTree1, "japonica", resolve.root=T)
 
 plotTree(bayesTree1, edge.width=2, font=1)
 nodelabels(bayesTree2$node.label, cex=0.8)
+
+###### Part 5: individual gene trees & ASTRAL ######
+# Align each sequence one by one, output as .nexus file
+for (i in 1:length(my.files)) {
+  seqs = readDNAStringSet(my.files[i])
+  alns = msa(seqs, method="Muscle", order="input")
+  out = gsub("fasta", "nexus", my.files[i])
+  write.nexus.data(as.DNAbin(alns), out)
+}
+
+# Download all of the run1.t files to get mcc trees
+# Read all of this files into a loop,
+# get the rooted MCC tree, and write to a newick file
+# Get all of the max clade credibility trees
+tree.files = list.files(path="./single-gene-trees", pattern="*run1.t", full.names = TRUE)
+for (i in 1:length(tree.files)) {
+  out = gsub("nexus\\.run1\\.t", "mcc.tre", tree.files[i])
+  trees = read.nexus(tree.files[i])
+  mcctree = root(mcc(trees), outgroup=c("japonica"))
+  write.tree(mcctree, out)
+}
+
+### Get all of the max clade credibility trees
+tree.files = list.files(path="./single-gene-treesets", pattern="*run1.t", full.names = TRUE)
+for (i in 1:length(tree.files)) {
+  out = gsub("nex\\.run1\\.t", "mcc.tre", gsub("single-gene-treesets\\/", "mcc_trees\\/", tree.files[i]))
+  trees = read.nexus(tree.files[i])
+  mcctree = root(mcc(trees), outgroup=c("japonica"))
+  write.tree(mcctree, out)
+}
+
+# run in astral on cluster
+# ...
+
+# output final tree
+astral = read.tree("fish_astral.tre")
+astral$node.label = round(((as.numeric(astral$node.label))*100), digits=2)
+astral$edge.length[which(is.na(astral$edge.length))] = 1
+astral2 = root(astral, "japonica", resolve.root=TRUE)
+jpeg("Fish-Astral-Tree.jpg", width=8, height=8, units="in", res=300)
+plotTree(astral2, edge.width=2, font=1)
+nodelabels(astral2$node.label, cex=0.8)
+dev.off()
+
+#get density tree 
+
+all.trees = read.tree("mcc_trees/fish_allLoci_mcc.tre")
+y = root(all.trees, outgroup=c("japonica"), resolve.root=TRUE)
+densityTree(y, type = "cladogram", alpha = 0.05, compute.consensus=FALSE, use.edge.length=FALSE)
+
+#compare trees, please!
+treedist(my.tree,bayesTree1) # differ at 1 site
+treedist(my.tree, astral2) # differ at 1 site
+treedist(bayesTree1,astral2) # differ at 2 sites
+
+###### Part 6: ASR ######
+# list out species
+TreeID = c('japonica','americanus','setigerus','caulinaris','ocellatum','pictus','brevicaudata',
+           'jordani','pelagica','spinifer','murrayi','thompsoni','vanhoeffeni','macrothrix','mollis')
+maxDepth = c(628,800,800,311,51,978,1024,1510,2500,1200,6370,2014,5300,2000,2250)
+names(maxDepth)=TreeID
+m = match(my.tree$tip.label, names(maxDepth))
+maxDepth = maxDepth[m]
+contMap(my.tree, maxDepth)
